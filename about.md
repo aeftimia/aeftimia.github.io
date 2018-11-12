@@ -15,4 +15,6 @@ I'm most at home programming in Python, which remains a swiss army knife (becaus
 
 Feel free to reach out if you're a long lost relative that wants to split a family fortune in exchange for a small loan up front. I've made _so much money_ helping distant royal relatives!
 
-My email is my first and last name (without any punctuation) @gmail.com.
+My email is alexeftimiades@gmail.com.
+
+My resume is available [here]({{ site.url }}/files/resume.pdf).

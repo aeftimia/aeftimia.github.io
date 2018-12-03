@@ -26,7 +26,7 @@ Shorthand for entropy over several subsets of features:
 
 $$ H(A\cup B) = -\sum_{a\in A, b\in B} p\left(a, b\right)\log\left(p\left(a, b\right)\right) $$
 
-I'm going with set builder notation over outer products here to help map common notions of probability distributions and entropy onto a notation that describes functions of sets. I originally tried this with sigma algebras, but the proofs went way off the page. I'm unfortunately substituting a visual eyesore for a mathematical one because if the visual eyesore prevents otherwise mathematically literate readers from getting through the damn post, then adhering to the traditional use of mathematical operators popular enough to make it into the MathJax renderer is doing more harm than good.
+I'm going with set builder notation over outer products here to help map common notions of probability distributions and entropy onto a notation that describes functions of sets. I originally tried this with sigma algebras, but the proofs went way off the page. I'm unfortunately substituting a visual eyesore for a mathematical one because if the visual eyesore prevents otherwise mathematically literate readers from getting through the post, then adhering to the traditional use of mathematical operators popular enough to make it into the MathJax renderer is doing more harm than good.
 
 ## Monotonicity
 
@@ -90,4 +90,4 @@ Hence a contradiction, proving $$H$$ submodular.
 ## Implications
 We've now shown entropy is monotone and submodular. The most straightforward result is that greedily building decision trees to maximize entropy gained from subsets of $$k$$ features will converge to a decent approximation (namely at least $$1 - 1 / e \approx 63\%$$) of the highest entropy $$k$$ element subset of features. In other words, you'll always get at least $$63\%$$ of the entropy you'd achieve from the best decision tree given a maximum tree depth. In practice, this limit can be made even higher if you keep running the algorithm after you already hit your prescribed tree depth, and at each step swap out your worst feature for the next best one that isn't in your tree yet.
 
-There are, however, broader implications. Decision trees are a very simple example of building predictive models from subsets of the data's feature space. However, the general idea of preprocessing data by pruning covariant or otherwise unnecessary features will generally improve any classification algorithm. The overarching rule here is that quality feature selection can be done greedily.
+here are, however, broader implications. Decision trees are a very simple example of building predictive models from subsets of the data's feature space. However, the general idea of preprocessing data by pruning covariant or otherwise unnecessary features will generally improve any classification algorithm. The overarching rule here is that quality feature selection can be done greedily.

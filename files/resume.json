@@ -1,0 +1,155 @@
+{
+  "selectedTemplate": 1,
+  "headings": {
+    "education": "",
+    "projects": "Projects",
+    "work": "Work Experience",
+    "skills": "Relevant Buzzwords",
+    "awards": "Publications"
+  },
+  "basics": {
+    "name": "Alex Eftimiades",
+    "email": "alexeftimiades@gmail.com",
+    "phone": "202-601-0543",
+    "website": "aeftimia.github.io",
+    "location": {
+      "address": "Washington, DC"
+    }
+  },
+  "education": [
+    {
+      "institution": "UMBC",
+      "location": "Catonsville, MD",
+      "area": "Physics",
+      "studyType": "BS",
+      "startDate": "2013",
+      "endDate": "2015"
+    }
+  ],
+  "work": [
+    {
+      "highlights": [
+        "Optimized and deployed Keras/Tensorflow models",
+        "Designed and wrote code refactoring tools",
+        "Designed and wrote real time data processing pipline",
+        "Wrote internal technical guides on parallel processing",
+        "Contributed code to Keras",
+        ""
+      ],
+      "company": "Catalist LLC",
+      "position": "Analytics Engineer",
+      "location": "Washington DC",
+      "startDate": "Feb 2018",
+      "endDate": "Present"
+    },
+    {
+      "highlights": [
+        "Researched models and techniques to simulate physical phenomena of interest to engineers and scientists",
+        "Wrote technical specifications of model, algorithm, and graphic interface",
+        "Implemented algorithms used for numerical simulations and user interfaces in java",
+        "Helped customers create and optimize simulations"
+      ],
+      "company": "Comsol",
+      "position": "Developer",
+      "location": "Burlington, MA",
+      "startDate": "Feb 2016",
+      "endDate": "May 2017"
+    },
+    {
+      "location": "/dev/null",
+      "website": "",
+      "highlights": [
+        "American Dental Association Foundation - data visualization, image processing",
+        "University of Maryland Baltimore County - high performance computing and simulations",
+        " Tor - internet censorship circumvention, protocol design, threat analysis",
+        ""
+      ],
+      "company": "Self Employed",
+      "startDate": "March 2013",
+      "endDate": "Pres",
+      "position": "Freelance Software Engineer"
+    }
+  ],
+  "skills": [
+    {
+      "level": "",
+      "keywords": [
+        "Python",
+        "Bash",
+        "SQL",
+        "C++",
+        null
+      ],
+      "name": "Programming Languages"
+    },
+    {
+      "keywords": [
+        "Keras",
+        "Numpy/Scipy",
+        "Cython",
+        "Pandas",
+        "scikit-learn",
+        "GNU Parallel"
+      ],
+      "name": "Frameworks"
+    },
+    {
+      "keywords": [
+        "Git",
+        "Vim",
+        "AWS",
+        "Jupyter",
+        "matplotlib",
+        "hdf5"
+      ],
+      "name": "Tools"
+    }
+  ],
+  "projects": [
+    {
+      "keywords": [
+        "Python"
+      ],
+      "name": "Toy Q Learning",
+      "description": "Trained two bots to learn to play tic tac toe via Q learning.",
+      "url": "https://github.com/aeftimia/Reinforcement-TicTacToe"
+    },
+    {
+      "keywords": [
+        "Python, Cython, Cuda"
+      ],
+      "name": "Discrete Exterior Calculus Framework",
+      "description": "Developed and reported on efficient and parallelized finite elements framework",
+      "url": "https://github.com/aeftimia/kahler"
+    },
+    {
+      "keywords": [
+        ""
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Enhancing the Three-Dimensional Structure of Adherent Gingival Fibroblasts and Spheroids via a Fibrous Protein-Based Hydrogel Cover.",
+      "date": "Aug. 2016",
+      "awarder": "Cells Tissues Organs",
+      "summary": "Published with biologists at American Dental Association Foundation"
+    },
+    {
+      "title": "Kahler: An Implementation of Discrete Exterior Calculus on Hermitian Manifolds",
+      "date": "May 2014",
+      "awarder": "http://arxiv.org/abs/1405.7879",
+      "summary": "Independent research and implementation"
+    },
+    {}
+  ],
+  "sections": [
+    "templates",
+    "profile",
+    "work",
+    "skills",
+    "projects",
+    "awards",
+    "education"
+  ]
+}

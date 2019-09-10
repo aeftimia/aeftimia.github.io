@@ -29,18 +29,40 @@
   "work": [
     {
       "highlights": [
-        "Optimized and deployed Keras/Tensorflow models",
+        "Designed and implemented algorithms to detect insider trading",
+        "Designed and implemented algorithms to detect market manipulation",
+        "Developed standard practices for model testing and monitoring"
+      ],
+      "company": "FINRA",
+      "position": "Data Scientist (Contract)",
+      "location": "Rockville, MD",
+      "startDate": "June 2019",
+      "endDate": "Dec 2019"
+    },
+    {
+      "highlights": [
+        "Designed and implemented deep learning based signal detector",
+        "Compared and reported on deep learning approaches benchmarked against classical clustering algorithms"
+      ],
+      "company": "Deepsig",
+      "position": "Machine Learning Engineer",
+      "location": "Arlington, VA",
+      "startDate": "Jan 2019",
+      "endDate": "March 2019"
+    },
+    {
+      "highlights": [
+        "Optimized and deployed Keras models",
         "Designed and wrote code refactoring tools",
         "Designed and wrote real time data processing pipline",
         "Wrote internal technical guides on parallel processing",
-        "Contributed code to Keras",
-        ""
+        "Contributed code to Keras"
       ],
       "company": "Catalist LLC",
       "position": "Analytics Engineer",
       "location": "Washington DC",
       "startDate": "Feb 2018",
-      "endDate": "Present"
+      "endDate": "Jan 2019"
     },
     {
       "highlights": [
@@ -56,15 +78,12 @@
       "endDate": "May 2017"
     },
     {
-      "location": "/dev/null",
       "website": "",
       "highlights": [
         "American Dental Association Foundation - data visualization, image processing",
         "University of Maryland Baltimore County - high performance computing and simulations",
-        " Tor - internet censorship circumvention, protocol design, threat analysis",
-        ""
+        " Tor - internet censorship circumvention, protocol design, threat analysis"
       ],
-      "company": "Self Employed",
       "startDate": "March 2013",
       "endDate": "Pres",
       "position": "Freelance Software Engineer"
@@ -77,19 +96,18 @@
         "Python",
         "Bash",
         "SQL",
-        "C++",
+        "Javascript",
         null
       ],
       "name": "Programming Languages"
     },
     {
       "keywords": [
-        "Keras",
+        "Pytorch",
         "Numpy/Scipy",
         "Cython",
         "Pandas",
-        "scikit-learn",
-        "GNU Parallel"
+        "Scikit-learn"
       ],
       "name": "Frameworks"
     },
@@ -99,8 +117,8 @@
         "Vim",
         "AWS",
         "Jupyter",
-        "matplotlib",
-        "hdf5"
+        "Seaborn",
+        "Docker"
       ],
       "name": "Tools"
     }
@@ -116,16 +134,21 @@
     },
     {
       "keywords": [
+        "Keras",
+        "Matplotlib",
+        "Jupyter",
+        "AWS"
+      ],
+      "name": "Semisupervised Learning",
+      "description": "Experimented with autoencoder based semi supervised clustering. 80% accuracy on 10% labeled MNIST data"
+    },
+    {
+      "keywords": [
         "Python, Cython, Cuda"
       ],
       "name": "Discrete Exterior Calculus Framework",
       "description": "Developed and reported on efficient and parallelized finite elements framework",
       "url": "https://github.com/aeftimia/kahler"
-    },
-    {
-      "keywords": [
-        ""
-      ]
     }
   ],
   "awards": [
@@ -140,8 +163,7 @@
       "date": "May 2014",
       "awarder": "http://arxiv.org/abs/1405.7879",
       "summary": "Independent research and implementation"
-    },
-    {}
+    }
   ],
   "sections": [
     "templates",
@@ -149,7 +171,7 @@
     "work",
     "skills",
     "projects",
-    "awards",
-    "education"
+    "education",
+    "awards"
   ]
 }

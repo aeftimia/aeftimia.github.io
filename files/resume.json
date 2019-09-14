@@ -4,7 +4,7 @@
     "education": "",
     "projects": "Projects",
     "work": "Work Experience",
-    "skills": "Relevant Buzzwords",
+    "skills": "Skills",
     "awards": "Publications"
   },
   "basics": {
@@ -140,7 +140,7 @@
         "AWS"
       ],
       "name": "Semisupervised Learning",
-      "description": "Experimented with autoencoder based semi supervised clustering. 80% accuracy on 10% labeled MNIST data"
+      "description": "Experimented with autoencoder based semi supervised clustering. 80% accuracy on 10% labeled mnist data"
     },
     {
       "keywords": [

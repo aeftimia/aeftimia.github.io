@@ -29,9 +29,9 @@
   "work": [
     {
       "highlights": [
-        "Designed and implemented algorithms to detect insider trading",
-        "Designed and implemented algorithms to detect market manipulation",
-        "Developed standard practices for model testing and monitoring"
+        "Used random forests, gradient boosted trees, deep neural networks, logistic regression, and ensembles to predict insider trading from trading patterns of potential suspects.",
+        "Designed and implemented deep neural network to identify market manipulation from raw market trades, 90% ROC AUC",
+        "Developed best practices for model testing and monitoring with Jupyter notebook based examples"
       ],
       "company": "FINRA",
       "position": "Data Scientist (Contract)",
@@ -41,8 +41,8 @@
     },
     {
       "highlights": [
-        "Designed and implemented deep learning based signal detector",
-        "Compared and reported on deep learning approaches benchmarked against classical clustering algorithms"
+        "Designed and implemented deep learning based signal detector and classifier",
+        "Compared and reported on deep learning approaches benchmarked against classical clustering algorithms for signal identification and classification"
       ],
       "company": "Deepsig",
       "position": "Machine Learning Engineer",
@@ -52,11 +52,11 @@
     },
     {
       "highlights": [
-        "Optimized and deployed Keras models",
-        "Designed and wrote code refactoring tools",
-        "Designed and wrote real time data processing pipline",
+        "Optimized, parallelized, and deployed NLP Keras model",
+        "Wrote SQL parser that refactored over 1 million lines of legacy SQL scripts",
+        "Designed and wrote real time data processing pipeline",
         "Wrote internal technical guides on parallel processing",
-        "Contributed code to Keras"
+        "Fixed Keras's tokenizer"
       ],
       "company": "Catalist LLC",
       "position": "Analytics Engineer",
@@ -80,9 +80,9 @@
     {
       "website": "",
       "highlights": [
-        "American Dental Association Foundation - data visualization, image processing",
-        "University of Maryland Baltimore County - high performance computing and simulations",
-        " Tor - internet censorship circumvention, protocol design, threat analysis"
+        "American Dental Association Foundation - performed data visualization and image processing with python, named 2nd author on resulting paper",
+        "University of Maryland Baltimore County - Reduced run time of quantum computing simulation from 5 days to 50 minutes",
+        " Tor - Wrote code to tunnel Iranians through google chat to reach the uncensored internet"
       ],
       "startDate": "March 2013",
       "endDate": "Pres",
@@ -126,6 +126,23 @@
   "projects": [
     {
       "keywords": [
+        "Python, Keras, scikit-learn",
+        ""
+      ],
+      "name": "Convolutional Decision Tree",
+      "description": "Decision trees are universal approximators just like neural networks. It turns out making decision trees convolutional does not help in the same way it does neural networks, but I had to try!",
+      "url": "https://gist.github.com/aeftimia/5587286cb844953528b92bea0cd80bdb"
+    },
+    {
+      "keywords": [
+        "Tensorflow, Python"
+      ],
+      "name": "Pseudoinvertible Neural Network",
+      "description": "Modified deep convolutional neural network classifier to only use [psuedo]invertible transformations. Achieved near SOTA accuracy with approximately half as many parameters.",
+      "url": "https://gist.github.com/aeftimia/045d1cd04a24f9c1b78baad5b2d5b73e"
+    },
+    {
+      "keywords": [
         "Python"
       ],
       "name": "Toy Q Learning",
@@ -140,7 +157,8 @@
         "AWS"
       ],
       "name": "Semisupervised Learning",
-      "description": "Experimented with autoencoder based semi supervised clustering. 80% accuracy on 10% labeled mnist data"
+      "description": "Experimented with autoencoder based semi supervised clustering. 80% accuracy on 10% labeled mnist data",
+      "url": "https://github.com/aeftimia/Deepsig"
     },
     {
       "keywords": [
@@ -162,7 +180,7 @@
       "title": "Kahler: An Implementation of Discrete Exterior Calculus on Hermitian Manifolds",
       "date": "May 2014",
       "awarder": "http://arxiv.org/abs/1405.7879",
-      "summary": "Independent research and implementation"
+      "summary": "Independent research and implementation of finite elements framework"
     }
   ],
   "sections": [
@@ -171,7 +189,7 @@
     "work",
     "skills",
     "projects",
-    "education",
-    "awards"
+    "awards",
+    "education"
   ]
 }

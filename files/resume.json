@@ -29,6 +29,7 @@
   "work": [
     {
       "highlights": [
+        "Kickstarted production monitoring R&D project; developed state of the art technique for measuring concept drift from samples",
         "Used random forests, gradient boosted trees, deep neural networks, logistic regression, and ensembles to predict insider trading from trading patterns of potential suspects.",
         "Designed and implemented deep neural network to identify market manipulation from raw market trades, 90% ROC AUC",
         "Developed best practices for model testing and monitoring with Jupyter notebook based examples"

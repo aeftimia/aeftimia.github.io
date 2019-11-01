@@ -32,7 +32,11 @@
         "Kickstarted production monitoring R&D project; developed state of the art technique for measuring concept drift from samples",
         "Used random forests, gradient boosted trees, deep neural networks, logistic regression, and ensembles to predict insider trading from trading patterns of potential suspects.",
         "Designed and implemented deep neural network to identify market manipulation from raw market trades, 90% ROC AUC",
-        "Developed best practices for model testing and monitoring with Jupyter notebook based examples"
+        "Developed best practices for model testing and monitoring with Jupyter notebook based examples",
+        "Developed novel embedding techniques using deep learning",
+        "Developed novel techniques to compare sample distributions",
+        "Gave talk on using normalizing flows for anomaly detection",
+        "Implemented normalizing flow (BNAF) in Jax"
       ],
       "company": "FINRA",
       "position": "Data Scientist (Contract)",
@@ -43,7 +47,8 @@
     {
       "highlights": [
         "Designed and implemented deep learning based signal detector and classifier",
-        "Compared and reported on deep learning approaches benchmarked against classical clustering algorithms for signal identification and classification"
+        "Compared and reported on deep learning approaches benchmarked against classical clustering algorithms for signal identification and classification",
+        "Gave talk on semisupervised learning"
       ],
       "company": "Deepsig",
       "position": "Machine Learning Engineer",

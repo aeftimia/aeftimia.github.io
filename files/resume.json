@@ -20,7 +20,7 @@
     {
       "institution": "UMBC",
       "location": "Catonsville, MD",
-      "area": "Physics",
+      "area": "Physics (Minor in Mathematics)",
       "studyType": "BS",
       "startDate": "2013",
       "endDate": "2015"
@@ -29,70 +29,103 @@
   "work": [
     {
       "highlights": [
-        "Kickstarted production monitoring R&D project; developed state of the art technique for measuring concept drift from samples",
+        "Kickstarted model monitoring R&D project; developed novel technique for measuring concept drift from samples",
         "Used random forests, gradient boosted trees, deep neural networks, logistic regression, and ensembles to predict insider trading from trading patterns of potential suspects.",
-        "Designed and implemented deep neural network to identify market manipulation from raw market trades, 90% ROC AUC",
+        "Designed and implemented POC deep neural network to identify market manipulation from raw market trades, 90% ROC AUC",
         "Developed best practices for model testing and monitoring with Jupyter notebook based examples",
         "Developed novel embedding techniques using deep learning",
         "Developed novel techniques to compare sample distributions",
         "Gave talk on using normalizing flows for anomaly detection",
-        "Implemented normalizing flow (BNAF) in Jax"
+        "Implemented normalizing flow (BNAF) in Jax",
+        "Participated in company hackathon",
+        "Gave nontechnical talks on machine learning research to business users",
+        "Contributed to machine learning education program"
       ],
       "company": "FINRA",
-      "position": "Data Scientist (Contract)",
+      "position": "Data Scientist",
       "location": "Rockville, MD",
       "startDate": "June 2019",
-      "endDate": "Dec 2019"
+      "endDate": "Present"
     },
     {
       "highlights": [
         "Designed and implemented deep learning based signal detector and classifier",
         "Compared and reported on deep learning approaches benchmarked against classical clustering algorithms for signal identification and classification",
-        "Gave talk on semisupervised learning"
+        "Gave talk on semi-supervised learning"
       ],
       "company": "Deepsig",
       "position": "Machine Learning Engineer",
       "location": "Arlington, VA",
-      "startDate": "Jan 2019",
+      "startDate": "January 2019",
       "endDate": "March 2019"
     },
     {
       "highlights": [
         "Optimized, parallelized, and deployed NLP Keras model",
-        "Wrote SQL parser that refactored over 1 million lines of legacy SQL scripts",
+        "Wrote SQL parser that refactored over one million lines of legacy SQL scripts",
         "Designed and wrote real time data processing pipeline",
         "Wrote internal technical guides on parallel processing",
-        "Fixed Keras's tokenizer"
+        "Fixed Keras' tokenizer"
       ],
       "company": "Catalist LLC",
       "position": "Analytics Engineer",
       "location": "Washington DC",
-      "startDate": "Feb 2018",
-      "endDate": "Jan 2019"
+      "startDate": "February 2018",
+      "endDate": "January 2019"
     },
     {
       "highlights": [
         "Researched models and techniques to simulate physical phenomena of interest to engineers and scientists",
         "Wrote technical specifications of model, algorithm, and graphic interface",
-        "Implemented algorithms used for numerical simulations and user interfaces in java",
+        "Implemented algorithms used for numerical simulations and user interfaces in Java",
         "Helped customers create and optimize simulations"
       ],
       "company": "Comsol",
       "position": "Developer",
       "location": "Burlington, MA",
-      "startDate": "Feb 2016",
+      "startDate": "February 2016",
       "endDate": "May 2017"
     },
     {
       "website": "",
       "highlights": [
-        "American Dental Association Foundation - performed data visualization and image processing with python, named 2nd author on resulting paper",
-        "University of Maryland Baltimore County - Reduced run time of quantum computing simulation from 5 days to 50 minutes",
-        " Tor - Wrote code to tunnel Iranians through google chat to reach the uncensored internet"
+        "American Dental Association Foundation - performed data visualization and image processing with Python, named second author in publication summarizing results",
+        "University of Maryland Baltimore County - Reduced run time of quantum computing simulation from five days to 50 minutes",
+        " Tor - Wrote code to tunnel citizens of countries with internet censorship to uncensored internet via Google Chat and Tor"
       ],
       "startDate": "March 2013",
-      "endDate": "Pres",
+      "endDate": "Present",
       "position": "Freelance Software Engineer"
+    },
+    {
+      "highlights": [
+        "Band structure calculations and simulations of carbon nanotubes"
+      ],
+      "company": "University of Maryland",
+      "position": "Research Assistant",
+      "location": "College Park, MD",
+      "startDate": "January 2011",
+      "endDate": "Aug 2012"
+    },
+    {
+      "highlights": [
+        "Developed and ran optics simulations to debug faulty depolarizer"
+      ],
+      "company": "NASA",
+      "position": "Intern",
+      "location": "Greenbelt, MD",
+      "startDate": "June 2010",
+      "endDate": "Aug 2010"
+    },
+    {
+      "highlights": [
+        "Researched physics of quantum well infrared photodetectors"
+      ],
+      "company": "Army Research Laboratory",
+      "location": "Adelphi, MD",
+      "startDate": "June 2009",
+      "endDate": "Aug 2009",
+      "position": "Intern"
     }
   ],
   "skills": [
@@ -132,7 +165,7 @@
   "projects": [
     {
       "keywords": [
-        "Python, Keras, scikit-learn",
+        "Python, Keras, Scikit-learn",
         ""
       ],
       "name": "Convolutional Decision Tree",
@@ -144,7 +177,7 @@
         "Tensorflow, Python"
       ],
       "name": "Pseudoinvertible Neural Network",
-      "description": "Modified deep convolutional neural network classifier to only use [psuedo]invertible transformations. Achieved near SOTA accuracy with approximately half as many parameters.",
+      "description": "Modified deep convolutional neural network classifier to use only psuedoinvertible transformations Achieved near state of the art accuracy with approximately half as many parameters",
       "url": "https://gist.github.com/aeftimia/045d1cd04a24f9c1b78baad5b2d5b73e"
     },
     {
@@ -152,7 +185,7 @@
         "Python"
       ],
       "name": "Toy Q Learning",
-      "description": "Trained two bots to learn to play tic tac toe via Q learning.",
+      "description": "Trained two bots to learn to play tic tac toe via Q learning",
       "url": "https://github.com/aeftimia/Reinforcement-TicTacToe"
     },
     {
@@ -162,8 +195,8 @@
         "Jupyter",
         "AWS"
       ],
-      "name": "Semisupervised Learning",
-      "description": "Experimented with autoencoder based semi supervised clustering. 80% accuracy on 10% labeled mnist data",
+      "name": "Semi-supervised Learning",
+      "description": "Experimented with autoencoder based semi-supervised clustering. 80% accuracy on 10% labeled MNIST data",
       "url": "https://github.com/aeftimia/Deepsig"
     },
     {
@@ -187,6 +220,12 @@
       "date": "May 2014",
       "awarder": "http://arxiv.org/abs/1405.7879",
       "summary": "Independent research and implementation of finite elements framework"
+    },
+    {
+      "title": "A New Perspective on Numerical Trigonometric Approximations",
+      "date": "January, 2009",
+      "awarder": "Montgomery College Student Journal of Science and Mathematics",
+      "summary": "Published an algorithm I developed in middle school that calculates trigonometric functions in the Montgomery College Student Journal of Science and Mathematics (no longer published) https://aeftimia.github.io/files/first_paper.pdf"
     }
   ],
   "sections": [

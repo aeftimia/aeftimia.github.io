@@ -4,7 +4,7 @@ title:  "Stop Imputing Nulls!"
 ---
 {% include math.html %}
 
-# Setup
+## Setup
 This is going to be a quick one, but I think an important note. For the purpose of this post, I'm going to assume you're evaluating a classifier on a dataset with partially missing data. That is, a handful of entries of a handful of features (at any given time) are `NULL` (i.e. the value is missing). In general, when you have a dataset with missing values, there are a lot of common practices people use to assign nonnull values to these missing values. 
 
 To start with a more concrete example, suppose we are trying to predict $$y$$ from $${X_1, X_2, X_3}$$ and $$X_3$$ is missing. Whatever your model, it will almost certainly throw a `NaN` back at you unless every feature is nonnull. At this point there's decent choice of [common heuristics](https://scikit-learn.org/stable/modules/impute.html) you could be using to guess a reasonable value for $$X_3$$.

@@ -33,7 +33,7 @@ is a delta function centered on the value $$X_3$$ takes on the nearest (nonnull)
 
 But is this what you really _want_? Remember, your objective is to compute a distribution over $$y$$ given $${X_1, X_2, X_3}$$. In the case of a missing $$X_3$$, __you have no data__ for $$X_3$$. So you're effectively trying to figure out what it _might_ be so you can plug that into your pretrained formula for
 $$P(y|X_1, X_2, X_3)$$
-. "What is the distribution of $$y$$ given $$X_1$$, $$X_2$$, and our best guess for what $$X_3$$ might have been?" is a proxy for "What what is the distribution of $$y$$ given $$X_1$$ and $$X_2$$?"--the latter being what you're actually after. Since $$X_3$$ is `NULL`, we simply don't have any data for it. Therefore, we commonly try to get our best estimate of $$P(y)$$ using our best guess of what $$X_3$$ might have been.
+. "What is the distribution of $$y$$ given $$X_1$$, $$X_2$$, and our best guess for what $$X_3$$ might have been?" is a proxy for "What what is the distribution of $$y$$ given $$X_1$$ and $$X_2$$?"--the latter being what you're actually after.
 
 ## Got a Better Idea?
 

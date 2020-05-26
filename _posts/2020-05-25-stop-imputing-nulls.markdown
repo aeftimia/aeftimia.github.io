@@ -7,7 +7,7 @@ title:  "Stop Imputing Nulls!"
 # Setup
 This is going to be a quick one, but I think an important note. For the purpose of this post, I'm going to assume you're evaluating a classifier on a dataset with partially missing data. That is, a handful of entries of a handful of features (at any given time) are `NULL` (i.e. the value is missing). In general, when you have a dataset with missing values, there are a lot of common practices people use to assign nonnull values to these missing values. 
 
-To start with a more concrete example, suppose we are trying to predict $$y$$ from $${X_1, X_2, X_3}$$ and $$X_3$$ is missing. Whatever your model, it will almost certainly throw a `NaN` back at you unless every feature is nonnull. At this point there's decent choice of [common hueristics](https://scikit-learn.org/stable/modules/impute.html) you could be using to guess a reasonable value for $$X_3$$.
+To start with a more concrete example, suppose we are trying to predict $$y$$ from $${X_1, X_2, X_3}$$ and $$X_3$$ is missing. Whatever your model, it will almost certainly throw a `NaN` back at you unless every feature is nonnull. At this point there's decent choice of [common heuristics](https://scikit-learn.org/stable/modules/impute.html) you could be using to guess a reasonable value for $$X_3$$.
 
 But let's take step a back for a second... What is our model trying to do? I mean formally, our model is trying to predict a conditional probability,
 
@@ -25,9 +25,9 @@ This is of course true if $$\hat{X}_3$$ really does approximate the missing $$X_
 
 In general, when you impute a missing value, you're effectively assuming some distribution over 
 $$P(X_3|X_1, X_2)$$
-, and pulling a point estimate of $$X_3$$ from this. For example. if you use a nearest neighbor look up, you're effectively assuming
+, and pulling a point estimate of $$X_3$$ from this. For example, if you use a nearest neighbor look up, you're effectively assuming
 $$P(X_3|X_1, X_2)$$
-is a delta function centered on the value $$X_3$$ takes on the nearest (nonnull) point in the training data as mesured by its distance to $$(X_2, X_3)$$ using, say, a Euclidian metric. If you replace $$X_3$$ with its mean value, you are again assuming a delta function over $$P(X_3|X_1, X_2)$$, but this time it's just a single delta function centered at $$\overline{X}_3$$. You're not using $$X_1$$ and $$X_2$$ at all!
+is a delta function centered on the value $$X_3$$ takes on the nearest (nonnull) point in the training data as measured by its distance to $$(X_2, X_3)$$ using, say, a Euclidean metric. If you replace $$X_3$$ with its mean value, you are again assuming a delta function over $$P(X_3|X_1, X_2)$$, but this time it's just a single delta function centered at $$\overline{X}_3$$. You're not using $$X_1$$ and $$X_2$$ at all!
 
 ## Where Am I Going With This?
 
@@ -52,7 +52,7 @@ $$P(y|X_1, X_2) = \mathbb{E}_{X_3\sim P(X_3)} P(y|X_1, X_2, X_3)$$
 That means if we just average the output of our original $$\mathrm{model}(X_1, X_2, X_3)$$ over randomly chosen nonnull values of $$X_3$$, we can answer our real question directly!
 
 ### Multiple NULLs
-When you have  more than one `NULL` feature, the correct extension of this technique would be to draw random samples from the subset of data you have for which _all_ (currently) missing values are nonnull. That is, if $$X_2$$ and $$X_3$$ were missing, you'd draw random instances in which $$X_2$$ and $$X_3$$ were _both_ nonnull, and use each of those pairs of values to simultaneously impute $$X_2$$ an $$X_3$$ for each sample. This effectivley gives you
+When you have  more than one `NULL` feature, the correct extension of this technique would be to draw random samples from the subset of data you have for which _all_ (currently) missing values are nonnull. That is, if $$X_2$$ and $$X_3$$ were missing, you'd draw random instances in which $$X_2$$ and $$X_3$$ were _both_ nonnull, and use each of those pairs of values to simultaneously impute $$X_2$$ an $$X_3$$ for each sample. This effectively gives you
 
 $$P(y|X_1) = \mathbb{E}_{X_2, X_3\sim P(X_2, X_3)} P(y|X_1, X_2, X_3)$$
 
@@ -62,12 +62,12 @@ Not necessarily! You don't need to use every sample you have of $$X_3$$, not by 
 
 ## Conclusion
 
-You probably shouldn't be imputing `NULL` inputs of supervised classifiers. Definately not for inference at least. Actually the above discussion holds just as well for regression models, which you could argue fit
+You probably shouldn't be imputing `NULL` inputs of supervised classifiers. Definitely not for inference at least. Actually the above discussion holds just as well for regression models, which you could argue fit
 $$P(y|X)$$
 for continuous $$y$$ to a delta function
 $$P(y|X)=\delta\left(y-\mathrm{model}(X)\right)$$
 .
 
-As an afterthought, the above trick could be applied to training, but things would get complicated. For every `NULL` value, you'd have to bootstrap `N` new samples (a few hundred, thousand, etc) replacing the `NULL`s with randomly chosen existing values. Furthuremore, you'd have to _weigh_ those bootstrapped samples with a factor of `1/N` (assuming all completely nonnull training points are assigned a weight of `1`).
+As an afterthought, the above trick could be applied to training, but things would get complicated. For every `NULL` value, you'd have to bootstrap `N` new samples (a few hundred, thousand, etc) replacing the `NULL`s with randomly chosen existing values. Furthermore, you'd have to _weigh_ those bootstrapped samples with a factor of `1/N` (assuming all completely nonnull training points are assigned a weight of `1`).
 
-This actually might not be so bad for algorithms trained via stochastic gradient descent. You might just impute the `NULL` values with a single randomly chosen nonnull example and not have to reweigh anything at all! Afterall, the whole point of stochastic gradient descent is to get a very rough (yet ideally unbiased) approximation of the gradient, and that's exactly what you're doing!
+This actually might not be so bad for algorithms trained via stochastic gradient descent. You might just impute the `NULL` values with a single randomly chosen nonnull example and not have to reweigh anything at all! After all, the whole point of stochastic gradient descent is to get a very rough (yet ideally unbiased) approximation of the gradient, and that's exactly what you're doing!

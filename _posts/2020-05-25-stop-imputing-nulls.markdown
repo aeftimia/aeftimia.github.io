@@ -62,11 +62,13 @@ Not necessarily! You don't need to use every sample you have of $$X_3$$, not by 
 
 ## Conclusion
 
-You probably shouldn't be imputing `NULL` inputs of supervised classifiers. Definitely not for inference at least. Actually the above discussion holds just as well for regression models, which you could argue fit
+You probably shouldn't be imputing `NULL` inputs of supervised classifiers. Definitely not for inference at least. Actually the above discussion still holds for regression models, which you could argue fit
 $$P(y|X)$$
 for continuous $$y$$ to a delta function
 $$P(y|X)=\delta\left(y-\mathrm{model}(X)\right)$$
-.
+. Things would get a little more complicated here because while the average of a sample of multinomial distributions (for categorical $$y$$) is a multinomial distribution, the average of a sample of delta functions is... the average of sample of delta functions. However, you could center a new delta function at the expectation over your mixture and effectively arrive at e.g.
+$$P(y|X)=\delta\left(y-\mathbb{E}_{X_3\sim P(X_3)}\mathrm{model}(X_1, X_2, X_3)\right)$$
+, which is analogous to what we derived for classifiers.
 
 As an afterthought, the above trick could be applied to training, but things would get complicated. For every `NULL` value, you'd have to bootstrap `N` new samples (a few hundred, thousand, etc) replacing the `NULL`s with randomly chosen existing values. Furthermore, you'd have to _weigh_ those bootstrapped samples with a factor of `1/N` (assuming all completely nonnull training points are assigned a weight of `1`).
 

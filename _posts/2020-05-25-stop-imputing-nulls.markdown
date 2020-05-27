@@ -58,7 +58,7 @@ $$P(y|X_1) = \mathbb{E}_{X_2, X_3\sim P(X_2, X_3)} P(y|X_1, X_2, X_3)$$
 
 ## But Isn't That Computationally Expensive?
 
-Not necessarily! You don't need to use every sample you have of $$X_3$$, not by a long shot. In practice, you're estimating a finite sample average, so the [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) dictates you're going to get a sample variance that drops off like $$\frac{1}{N}$$. Better still, your model is estimating a probability distribution, so (assumimg this is a distribution over a discrete variable $$y$$) every output of the model will be bounded between $$0$$ and $$1$$. This means you can place an upper bound of $$\frac{1}{2N}$$ on the variance of your finite sample estimate.
+Not necessarily! You don't need to use every sample you have of $$X_3$$, not by a long shot. In practice, you're estimating a finite sample average, so the [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) dictates you're going to get a sample variance that drops off like $$\frac{1}{N}$$. Better still, your model is estimating a probability distribution, so (assumimg this is a distribution over a discrete variable $$y$$) every output of the model will be bounded between $$0$$ and $$1$$. This means you can place an upper bound of $$\frac{1}{4N}$$ on the variance of your finite sample estimate.
 
 ## Conclusion
 

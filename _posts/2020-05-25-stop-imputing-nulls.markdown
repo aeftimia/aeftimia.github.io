@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Stop Imputing Nulls!"
+title:  "Stop Imputing Nulls?"
 ---
 {% include math.html %}
 
@@ -37,40 +37,85 @@ $$P(y|X_1, X_2, X_3)$$
 
 ## Got a Better Idea?
 
-Why yes, I do! You have a model for
+Maybe. You have a model for
 $$P(y|X_1, X_2, X_3)$$
 , you want a model for
 $$P(y|X_1, X_2)$$
-. You understandably don't want to have to train a new model for every possible combination `NULL` values. The good news is you don't need to because
+. You understandably don't want to have to train a new model for every possible combination `NULL` values. What can be said is
 
-$$P(y|X_1, X_2) = \int dX_3 P(y|X_1, X_2, X_3)P(X_3)$$
+$$P(y|X_1, X_2) = \int dX_3 P(y|X_1, X_2, X_3)P(X_3|X_2,X_1)$$
 
 , which by the [law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers), is equivalent to
 
-$$P(y|X_1, X_2) = \mathbb{E}_{X_3\sim P(X_3)} P(y|X_1, X_2, X_3)$$
+$$P(y|X_1, X_2) = \mathbb{E}_{X_3\sim P(X_3|X_1,X_2)} P(y|X_1, X_2, X_3)$$
 
-That means if we just average the output of our original $$\mathrm{model}(X_1, X_2, X_3)$$ over randomly chosen nonnull values of $$X_3$$, we can answer our real question directly!
+This of course raises a new question: how would one go about computing
+$$P(X_3|X_1,X_2)$$ 
+? This is a question of conditional density estimation, and generally speaking not an easy task (the sole exception being if all variables _except_ the ones that are null are categorical in nature. In this case, you can just condition on your categorical variables and average over null ones). However, when you impute
+$$X_3$$
+with
+$$\hat{X}_3$$
+, you're effectively assuming
+$$P(X_3|X_1, X_2)=\delta(X_3-\hat{X}_3)$$
+. You are also _likely_  picking a point that maximizes some reasonable conditional density estimator. For example, if you're imputing with a weighted average of nonnull values, you're probably assuming some distribution over $$X_1\times X_2$$ that peaks at that same weighted average over coordinate vectors $$(X_1, X_2)$$. Hence if you can think of a reasonable way to impute $$X_3$$, there is very likely a corresponding density estimator you would also find reasonable. Meanwhile, if
+$$X_3$$
+is conditionally independent of
+$$X_1, X_2$$
+, you can just average your model over randomly chosen samples of
+$$X_3$$
+regardless of its corresponding
+$$X_1\times X_2$$
+.
+
+I can think of two generic yet potentially practical options.
+
+### Binning
+You could bin your nonnull continuous variables (for simplicity, let's suppose $$X_1$$ and $$X_2$$ are continuous unless stated otherwise), effectively making them categorical. Then you are free to sample values of $$X_3$$ found within a corresponding bin of $$X_1, X_2$$. This effectively approximates $$P(X_3|X_1,X_2)$$ as constant within a sufficiently narrow box in $$X_1\times X_2$$ space.
+
+So what size bin do you want to use? Well, you're ultimately estimating a finite sample average of $$\mathrm{model}(X_1, X_2, X_3)$$ (averaged over different values of $$X_3$$), so the [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) dictates you're going to get a sample variance that drops off like $$\frac{1}{N}$$. Better still, your model is estimating a probability distribution, so (assumimg this is a distribution over a discrete variable $$y$$) every output of the model will be bounded between $$0$$ and $$1$$. This means you can place an upper bound of $$\frac{1}{4N}$$ on the variance of your finite sample estimate.
+
+This means that your bin should be large enough that
+$$\frac{1}{4N}$$
+is an acceptable sample variance, where
+$$N$$
+is the number of samples found within your bin. Meanwhile, if your bin is too large,
+$$P(X_3|X_1,X_2)$$
+may no longer be approximately constant.
+
+As an extreme extension, one could sample uniformly from the convex hull defined by the k nearest $$X_1, X_2$$. This, however, would require iterating over the entire dataset to identify close points, andwould likely require the same order of computation as training a new model (unless you already have the data stored in a [K-D tree](https://en.wikipedia.org/wiki/K-d_tree)).
+
+### Kernel Regression
+[Kernel density estimation](https://en.wikipedia.org/wiki/Kernel_regression) has been used as a quick way to approximate conditional expectations. The formalism looks like this:
+
+$$\overline{z}(X) = \frac{\sum\limits_i K_h(X_i - X) z_i}{\sum\limits_i K_h(X_i - X)}$$
+
+This is called a Nadaraya–Watson estimator, and is generally used for regression. In our case, we want to regress the expected value of $$\mathrm{model}(X_1, X_2, X_3)$$ as a function of nonnull arguments $$X_1, X_2$$.
+
+$$\overline{\mathrm{model}}(X_1, X_2, X_3) = \frac{\sum\limits_i K_h(X_1 - X_{1,i}, X_2 - X_{2,i}) \mathrm{model}(X_1, X_2, X_{3,i})}{\sum\limits_i K_h(X_1 - X_{1,i}, X_2 - X_{2,i})}$$
+
+We are effectively integrating over a weighted averge of existing sample values with weights that increase as you get closer to $$(X_1, X_2)$$, representing the particular values of $$X_1\times X_2$$ taken for our particular example (with null $$X_3$$). The central limit theorem again dictates $$\frac{1}{N}$$ sample variance for a finite sample estimate of $$N$$ samples.
+
+Note $$K_h(x_1, x_2, \dotsc, x_n)=\exp\left(\frac{1}{h^2}\sum\limits_{i=1}^n x_i^2\right)$$ for a given bandwidth $$h$$. Choosing a bandwidth can be performed using [common heuristics or cross validation](https://en.wikipedia.org/wiki/Kernel_density_estimation#Bandwidth_selection), however you're back to training a new model if you use anything but a $$O(1)$$ heuristic. Of course, if you do go that route, you could make $$h$$ a vector and pick different scales for different coordinates, or even build a full covariance matrix. For example, you could build the full covariance matrix from nonnull samples, invert it, and just use this to build Nadaraya-Watson estimators when you hit null values. If some of your features are categorical, you'd have to repeat this process for every new unique combination of nonnull categories you hit, but it's still a $$O(1)$$ process if you fix the number of samples you use to build your covariance matrix ahead of time (and your data is appropriately indexed across categorical features for easy lookups).
+
+One nice aspect about this technique is you can just randomly sample points from your existing dataset, and weight them accordingly, and expect $$\frac{1}{N}$$ sample variance guaranteed by the central limit theorem.
+
+It's also worth pointing out that as $$h\rightarrow\infty$$ you approach assuming conditional independence between $$X_3$$ and $$X_1, X_2$$ (in which case you're just averaging the $$\mathrm{model}$$ over randomly sampled values of $$X_3$$). As $$h\rightarrow 0$$, you approach imputation with a nearest neighbor lookup.
 
 ### Multiple NULLs
 When you have  more than one `NULL` feature, the correct extension of this technique would be to draw random samples from the subset of data you have for which _all_ (currently) missing values are nonnull. That is, if $$X_2$$ and $$X_3$$ were missing, you'd draw random instances in which $$X_2$$ and $$X_3$$ were _both_ nonnull, and use each of those pairs of values to simultaneously impute $$X_2$$ an $$X_3$$ for each sample. This effectively gives you
 
-$$P(y|X_1) = \mathbb{E}_{X_2, X_3\sim P(X_2, X_3)} P(y|X_1, X_2, X_3)$$
+$$P(y|X_1) = \mathbb{E}_{X_2, X_3\sim P(X_2, X_3|X_1)} P(y|X_1, X_2, X_3)$$
 
 ### Regression
 Regression algorithms seek to learn the expectation of the dependent variable given the independent variables.
 
-$$\overline{y}=\int y P(y|X_1,X_2,X_3) dy$$
+$$\overline{y}=\int y P(y|X_1\times X_2,X_3) dy$$
 
 The same argument can be applied as before here, now to computing $$\overline{y}$$ given $$X_1$$ and $$X_2$$ in the case of a null $$X_3$$.
 
-## But Isn't That Computationally Expensive?
-
-Not necessarily! You don't need to use every sample you have of $$X_3$$, not by a long shot. In practice, you're estimating a finite sample average, so the [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) dictates you're going to get a sample variance that drops off like $$\frac{1}{N}$$. Better still, your model is estimating a probability distribution, so (assumimg this is a distribution over a discrete variable $$y$$) every output of the model will be bounded between $$0$$ and $$1$$. This means you can place an upper bound of $$\frac{1}{4N}$$ on the variance of your finite sample estimate.
-
-
 ## Conclusion
 
-You probably shouldn't be imputing `NULL` inputs of supervised classifiers. Definitely not for inference at least.
+Rather than developing a model for missing values, you at least in principle should be trying to compute an expectation of the output of the model over a distribution governing the missing input.
 
 As an afterthought, the above trick could be applied to training, but things would get complicated. For every `NULL` value, you'd have to bootstrap `N` new samples (a few hundred, thousand, etc) replacing the `NULL`s with randomly chosen existing values. Furthermore, you'd have to _weigh_ those bootstrapped samples with a factor of `1/N` (assuming all completely nonnull training points are assigned a weight of `1`).
 

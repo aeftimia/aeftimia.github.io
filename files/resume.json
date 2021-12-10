@@ -29,14 +29,9 @@
   "work": [
     {
       "highlights": [
-        "Developed internal Python package to measure model drift (Jax).",
-        "Developed reinforcement learning technique to balance setting thresholds used for binary classification and reassessing false negative rate. Gave internal talk on this technique.",
-        "Developed and implemented FINRA's first machine learning based pipeline to search for insider trading (Scikit-learn).",
-        "Developed best practices for model testing and monitoring.",
-        "Helped author curriculum to introduce software testers to data science and machine learning.",
-        "Gave internal talk on normalizing flows.",
-        "Gave internal talk on software engineering for data scientists.",
-        "Created and conducted technical interviews for data scientists. Hired five new data scientists."
+        "Developed supervised and unsupervised models to identify insider trading (xgboost), market manipulation (dbscan), fraud (bayesian analysis), and triage external communication (xgboost, BERT)",
+        "Developed and open sourced toolkit for validating and monitoring machine learning models https://finraos.github.io/model-validation-toolkit/",
+        "Gave internal talks on: software engineering for data scientists, countering sample bias, measuring model drift, thresholding, normalizing flows"
       ],
       "company": "FINRA",
       "position": "Data Scientist",
@@ -173,14 +168,6 @@
       "keywords": [
         "Python"
       ],
-      "name": "Packrat Parser Generator (July 2020)",
-      "description": "I generalized the PEG parser I wrote as part of David Beazley's week long course on writing a compiler from scratch into a packrat parser generator.",
-      "url": "https://github.com/aeftimia/fpeg"
-    },
-    {
-      "keywords": [
-        "Python"
-      ],
       "name": "Compiler From Scratch (July 2020)",
       "description": "Successfully completed David Beazley's week long course on writing a compiler from scratch. My compiler was able to generate working LLVM bytecode from a factorial function defined in a language similar to C.",
       "url": "https://github.com/aeftimia/dabeaz-compilers-2020"
@@ -236,10 +223,10 @@
   "sections": [
     "templates",
     "profile",
+    "education",
     "work",
     "skills",
     "projects",
-    "awards",
-    "education"
+    "awards"
   ]
 }

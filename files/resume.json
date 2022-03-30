@@ -168,28 +168,17 @@
       "keywords": [
         "Python"
       ],
-      "name": "Compiler From Scratch (July 2020)",
-      "description": "Successfully completed David Beazley's week long course on writing a compiler from scratch. My compiler was able to generate working LLVM bytecode from a factorial function defined in a language similar to C.",
-      "url": "https://github.com/aeftimia/dabeaz-compilers-2020"
-    },
-    {
-      "keywords": [
-        "Keras",
-        "Matplotlib",
-        "Jupyter",
-        "AWS"
-      ],
-      "name": "Semi-supervised Learning (November 2018)",
-      "description": "Experimented with autoencoder based semi-supervised clustering. 80% accuracy on 10% labeled MNIST data.",
-      "url": "https://github.com/aeftimia/Deepsig"
+      "name": "Tlang",
+      "description": "Experimental transpiler generator built on composable context sensitive parser generators",
+      "url": "https://github.com/aeftimia/tlang"
     },
     {
       "keywords": [
         "Python"
       ],
-      "name": "Toy Q Learning (July 2018)",
-      "description": "Trained two bots to learn to play tic tac toe via Q learning.",
-      "url": "https://github.com/aeftimia/Reinforcement-TicTacToe"
+      "name": "Model Validation Toolkit",
+      "description": "Open sourced internal project at FINRA for model validation and monitoring",
+      "url": "https://github.com/FINRAOS/model-validation-toolkit"
     },
     {
       "keywords": [

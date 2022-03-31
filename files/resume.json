@@ -168,7 +168,7 @@
       "keywords": [
         "Python"
       ],
-      "name": "Tlang",
+      "name": "Tlang (March 2022)",
       "description": "Experimental transpiler generator built on composable context sensitive parser generators",
       "url": "https://github.com/aeftimia/tlang"
     },
@@ -176,7 +176,7 @@
       "keywords": [
         "Python"
       ],
-      "name": "Model Validation Toolkit",
+      "name": "Model Validation Toolkit (Dec 2021)",
       "description": "Open sourced internal project at FINRA for model validation and monitoring",
       "url": "https://github.com/FINRAOS/model-validation-toolkit"
     },
@@ -187,6 +187,14 @@
       "name": "Discrete Exterior Calculus Framework (May 2014)",
       "description": "Parallelized and generalized the discrete exterior calculus (similar to finite elements) framework PyDEC. Wrote efficient framework to generate structured and random simplicial complexes of arbitrary dimension, geometry, and topology to test the framework. Fixed PyCULA (Python interface to CULA for linear algebra on CUDA) to offload linear algebra onto a GPU. Wrote up results on arXiv: https://arxiv.org/abs/1405.7879.",
       "url": "https://github.com/aeftimia/kahler"
+    },
+    {
+      "keywords": [
+        "Python"
+      ],
+      "name": "Hexchat (July 2013)",
+      "description": "Wrote internet censorship circumvention software for Tor. Tunnels TCP connections over arbitrary numbers of XMPP chatlines--circumventing bandwidth limitations imposed by the hosts.",
+      "url": "https://github.com/aeftimia/hexchat"
     }
   ],
   "awards": [

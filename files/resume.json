@@ -29,6 +29,7 @@
   "work": [
     {
       "highlights": [
+        "Lead deployment of NLP models in production using Docker and Lambda on AWS",
         "Developed supervised and unsupervised models to identify insider trading (xgboost), market manipulation (dbscan), fraud (bayesian analysis), and triage external communication (xgboost, BERT)",
         "Developed and open sourced toolkit for validating and monitoring machine learning models https://finraos.github.io/model-validation-toolkit/",
         "Gave internal talks on: software engineering for data scientists, countering sample bias, measuring model drift, thresholding, normalizing flows"
@@ -198,6 +199,12 @@
     }
   ],
   "awards": [
+    {
+      "title": "Introducing the Model Validation Toolkit",
+      "date": "April 2022",
+      "awarder": "Open Source Data Science (ODSC) East 2022",
+      "summary": "Gave talk at ODSC East introducing open source toolkit developed internally at FINRA"
+    },
     {
       "title": "Enhancing the Three-Dimensional Structure of Adherent Gingival Fibroblasts and Spheroids via a Fibrous Protein-Based Hydrogel Cover.",
       "date": "August 2016",

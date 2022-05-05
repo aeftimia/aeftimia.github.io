@@ -1,11 +1,11 @@
 {
   "selectedTemplate": 1,
   "headings": {
-    "education": "",
     "projects": "Projects",
     "work": "Work Experience",
     "skills": "Skills",
-    "awards": "Publications"
+    "awards": "Publications",
+    "education": ""
   },
   "basics": {
     "name": "Alex Eftimiades",
@@ -227,10 +227,10 @@
   "sections": [
     "templates",
     "profile",
-    "education",
     "work",
     "skills",
     "projects",
-    "awards"
+    "awards",
+    "education"
   ]
 }

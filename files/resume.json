@@ -30,7 +30,7 @@
     {
       "highlights": [
         "Lead deployment of NLP models in production using Docker and Lambda on AWS",
-        "Developed supervised and unsupervised models to identify insider trading (xgboost), market manipulation (dbscan), fraud (bayesian analysis), and triage external communication (xgboost, BERT)",
+        "Developed supervised and unsupervised models to identify insider trading (xgboost; 96% AUC), market manipulation (dbscan), fraud (bayesian analysis), and triage external communication (xgboost, BERT)",
         "Developed and open sourced toolkit for validating and monitoring machine learning models https://finraos.github.io/model-validation-toolkit/. Presented at ODSC East 2022.",
         "Gave internal talks on: software engineering for data scientists, countering sample bias, measuring model drift, thresholding, normalizing flows"
       ],

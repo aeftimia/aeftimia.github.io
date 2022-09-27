@@ -13,7 +13,7 @@
     "phone": "202-601-0543",
     "website": "aeftimia.github.io",
     "location": {
-      "address": "Frederick, MD"
+      "address": "Lenoir, NC"
     }
   },
   "education": [
@@ -33,7 +33,8 @@
         "Developed supervised and unsupervised models to identify insider trading (xgboost; 96% AUC), market manipulation (dbscan), fraud (bayesian analysis), and triage external communication (xgboost, BERT)",
         "Developed and open sourced toolkit for validating and monitoring machine learning models https://finraos.github.io/model-validation-toolkit/. Presented at ODSC East 2022.",
         "Gave internal talks on: software engineering for data scientists, countering sample bias, measuring model drift, thresholding, normalizing flows",
-        "Interview and mentor junior data scientists and lead regular data science related sessions and workshops"
+        "Mentor junior data scientists and lead regular data science related sessions and workshops",
+        "Developed and conducted technical interview process and brought on 7 data scientists"
       ],
       "company": "FINRA",
       "position": "Lead Data Scientist",

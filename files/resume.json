@@ -13,7 +13,7 @@
     "phone": "202-601-0543",
     "website": "aeftimia.github.io",
     "location": {
-      "address": "Lenoir, NC"
+      "address": "Frederick, MD"
     }
   },
   "education": [
@@ -29,13 +29,13 @@
   "work": [
     {
       "highlights":  [
-        "Lead deployment of NLP models in production using Docker and Lambda on AWS, reducing costs by 80%",
-        "Developed supervised and unsupervised models to identify insider trading (xgboost; 96% AUC), market manipulation (dbscan), fraud (bayesian analysis), and triage external communication (xgboost, BERT)",
-        "Participated and lead R&D efforts on interpretable machine learning, model validation and monitoring, and various ensemble models",
+        "Lead deployment of NLP models in production using Docker and Lambda on AWS, reducing costs by 80%.",
+        "Developed supervised and unsupervised models to identify insider trading (xgboost; 96% AUC), market manipulation (dbscan), fraud (bayesian analysis), and triage external communication (xgboost, sklearn, BERT).",
+        "Participated and lead R&D efforts on interpretable machine learning, model validation and monitoring, and various ensemble models.",
         "Developed and open sourced toolkit based on R&D efforts for validating and monitoring machine learning models https://finraos.github.io/model-validation-toolkit/. Presented at ODSC East 2022.",
-        "Gave internal talks on: software engineering for data scientists, countering sample bias, measuring model drift, thresholding, normalizing flows",
-        "Mentored junior data scientists and lead regular data science related sessions and workshops",
-        "Developed and conducted technical interview process and brought on 7 data scientists"
+        "Gave internal talks on: software engineering for data scientists, countering sample bias, measuring model drift, thresholding, normalizing flows.",
+        "Mentored junior data scientists and lead regular data science related sessions and workshops.",
+        "Developed and conducted technical interview process and brought on 7 data scientists."
       ],
       "company": "FINRA",
       "position": "Lead Data Scientist",
@@ -139,9 +139,7 @@
       "keywords": [
         "Python",
         "Bash",
-        "SQL",
-        "Javascript",
-        null
+        "SQL"
       ],
       "name": "Programming Languages"
     },
@@ -161,7 +159,7 @@
         "Vim",
         "AWS",
         "Jupyter",
-        "Seaborn",
+        "Plotly",
         "Docker"
       ],
       "name": "Tools"

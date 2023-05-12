@@ -198,12 +198,6 @@
     ],
     "awards": [
         {
-            "title": "Superhost",
-            "date": "Jan 2023",
-            "awarder": "Airbnb",
-            "summary": ""
-        },
-        {
             "title": "First Place in APA MVP 8 Ball Tournament",
             "date": "Aug 2022",
             "awarder": "American Pool Association",
@@ -232,12 +226,6 @@
             "date": "May 2014",
             "awarder": "http://arxiv.org/abs/1405.7879",
             "summary": "Independent research and implementation of finite elements framework."
-        },
-        {
-            "title": "A New Perspective on Numerical Trigonometric Approximations",
-            "date": "January, 2009",
-            "awarder": "Montgomery College Student Journal of Science and Mathematics (no longer published)",
-            "summary": "Published an algorithm I developed in middle school that calculates trigonometric functions https://aeftimia.github.io/files/first_paper.pdf"
         }
     ],
     "education": [

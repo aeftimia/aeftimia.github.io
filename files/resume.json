@@ -16,7 +16,8 @@
     "work": [
         {
             "highlights":  [
-                "Building out systems for Ad generation and monitoring"
+                "Built out Facebook and Instagram ad generation and monitoring pipeline using Python and Kubernetes.",
+                "Presented approach and A/B testing techniques at Data Science Salon"
             ],
             "company": "Penguin Random House",
             "position": "Applied ML Scientist",
@@ -155,6 +156,7 @@
                 "Git",
                 "Vim",
                 "AWS",
+                "Kubernetes",
                 "Jupyter",
                 "Plotly",
                 "Docker"
@@ -197,6 +199,12 @@
         }
     ],
     "awards": [
+        {
+            "title": "Advertising at Scale",
+            "date": "June 2023",
+            "awarder": "Data Science Salon",
+            "summary": "Presented work on automated advertising and A/B testing at Data Science Salon"
+        },
         {
             "title": "First Place in APA MVP 8 Ball Tournament",
             "date": "Aug 2022",

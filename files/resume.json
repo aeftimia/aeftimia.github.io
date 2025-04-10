@@ -14,8 +14,20 @@
         "website": "aeftimia.github.io"
     },
     "work": [
+    {
+            "highlights":  [
+                "Built and launched several financial planning apps on https://decisiondough.com.",
+                "Built and launched the weather app, Offensive Weather https://offensiveweather.com to Google Play Store and Apple App Store."
+            ],
+            "company": "Trekkit LLC",
+            "position": "Founding CEO",
+            "location": "Remote",
+            "startDate": "Jan 2024",
+            "endDate": "Present"
+        },
         {
             "highlights":  [
+                "Developed mixed marketing model to compute ROI from ad spend across platforms for new books",
                 "Built out Facebook and Instagram ad generation and monitoring pipeline using Python and Kubernetes.",
                 "Presented approach and A/B testing techniques at Data Science Salon"
             ],

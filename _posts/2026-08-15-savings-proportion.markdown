@@ -22,7 +22,7 @@ $$
 r \cdot P(t) = (1-s)I.
 $$
 
-Substituting and canceling $I$:
+Substituting and canceling $$I$$:
 
 $$
 s\left[(1+r)^t - 1\right] = 1 - s \quad\Longrightarrow\quad (1+r)^t = \frac{1}{s}
@@ -44,7 +44,7 @@ $$
 t = \frac{\ln 2}{\ln 1.0784} \approx 9.2 \text{ years,}
 $$
 
-matching the "closer to 9 years once you account for inflation" intuition. I'm not saying you'd necessarily want to pull the trigger at exactly $$t(s)$$, since $$r$$ isn't guaranteed — but it gives you a solid ballpark, especially if you're not afraid to ride out a bad year abroad or go back to work after a recession. The neat thing about this argument is that it never assumed anything about your income or lifestyle — just $$s$$ and $$r$$. I think that generalizes well to a lot of dual income couples with pretty different paychecks.
+matching the "closer to 9 years once you account for inflation" intuition. I'm not saying you'd necessarily want to pull the trigger at exactly $$t(s)$$, since $$r$$ isn't guaranteed — but it gives you a solid ballpark, especially if you're not afraid to ride out a bad year abroad or go back to work after a recession. The neat thing about this argument is that it never assumed anything about your income or lifestyle — just $$s$$ and $$r$$. I think the logic here is applicable to most of the middle class even if $$s<0.5$$.
 
 Just an aside here for anyone that gets all squirmy thinking of retiring the minute their expected interest equals their expected expenses. We can introduce a margin $$m \geq 1$$ for how many times over you want your interest to cover your spending before saying you could retire. The condition becomes $$rP(t) = m\cdot(1-s)I$$ instead of exact equality (so if $$m=1.5$$, the "5x take home" target from earlier just becomes "7.5x take home"), which reshapes the result above to
 
@@ -55,3 +55,71 @@ $$
 This is the same $$1/s$$ from the plain rule, just scaled by $$m$$ and shifted down by a constant $$(m-1)$$. The point is $$t(s)$$ has the same shape and remains invariant with your income $$I$$ even accounting for some safety margin.
 
 Today I noticed something else about this, and maybe it's almost as useful. As my wife and I considered a move to a higher cost-of-living area in exchange for more money, I asked whether our new expenses would hurt our early-retirement timeline. I went back to $$t(s)$$. If a move raises both your income and your spending but leaves $$s$$ unchanged, your timeline to retirement doesn't move at all — and the lifestyle you retire *into* scales up right along with the lifestyle you had while saving, because your target portfolio $$P^* = m \cdot (1-s)I/r$$ scales linearly with $$I$$. As long as you don't let $$s$$ slip, you get to carry the upgrade with you: retire on the same schedule, spend more getting there, and spend more once you're there.
+
+I'd like to wrap up with an interesting side effect. Suppose your savings rate goes from $$s_1$$ to $$s_2$$. Then the amount of working time you buy back is just the difference between the two retirement timelines,
+
+$$
+\Delta t = t(s_1)-t(s_2)
+$$
+
+For the simple $$m=1$$ case, this cleans up nicely:
+
+$$
+\Delta t
+= \frac{\ln(s_2/s_1)}{\ln(1+r)}
+$$
+
+So it's really the *proportional* improvement in your savings rate that matters. If I call that improvement $$k=s_2/s_1$$, then
+
+$$
+\boxed{\Delta t=\frac{\ln k}{\ln(1+r)}}
+$$
+
+With the safety margin from above, the same calculation is a little uglier but still explicit:
+
+$$
+\Delta t =
+\frac{1}{\ln(1+r)}
+\ln\left(
+\frac{\frac{m}{s_1}-(m-1)}
+{\frac{m}{s_2}-(m-1)}
+\right)
+$$
+
+For our move, we're looking at $$k \approx 1.2$$. That is, we save 20% more of our income after taxes after the move with the higher paying job despite increases in housing and childcare. Using the same inflation-adjusted $$r\approx7.84%$$ from above, the plain $$m=1$$ results in about 2.5 years of work shaved off of our retirement timeline. And somewhat counterintuitively, being more conservative makes the move look even better. If I require investment income to cover twice our spending ($$m=2$$), our timeline to retirement is shortened by a little over 3 years! This is because at higher $$m$$, you just end up working longer. In fact, if increasing the savings rate helps at all ($$s_2>s_1$$), then increasing $$m$$ *always* increases the amount of time saved. Taking the derivative with respect to $$m$$ gives
+
+$$
+\frac{\partial \Delta t}{\partial m}
+=
+\frac{s_2-s_1}
+{\ln(1+r)
+\left(m-(m-1)s_1\right)
+\left(m-(m-1)s_2\right)
+}
+$$
+
+Assuming positive returns and sane savings rates ($$r>0$$ and $$0<s_1<s_2<1$$), everything in the denominator is positive. Since $$k>1$$, the numerator is positive too, so
+
+$$
+\frac{\partial \Delta t}{\partial m}>0
+$$
+
+In other words, the more conservative you are about how much money you need before retiring, the *more* valuable an improvement in savings rate becomes in terms of working years saved.
+
+There's a limit to this though, and I think it's actually a pretty interesting one. At very large safety margins, increasing m just scales both retirement targets by roughly the same amount. Their ratio therefore approaches a constant, so the difference in time required to reach them does too. Done mathematically $$m\rightarrow\infty$$,
+
+$$
+\Delta t
+\rightarrow
+\frac{1}{\ln(1+r)}
+\ln\left(
+\frac{s_2/(1-s_2)}
+{s_1/(1-s_1)}
+\right)
+$$
+
+So the time saved keeps increasing with $$m$$, but it approaches a finite ceiling. The ratio inside the logarithm is basically comparing savings to spending before and after the move.
+
+For my numbers, that ceiling comes out to be about 4.8 years.... which is kind of wild! At $$m=1$$ the move buys us about 2.5 years, at $$m=2$$ a little over 3 years, and no matter how absurdly conservative I make the retirement target, the benefit asymptotically tops out at about 4.8 years of working life.
+
+Obviously these are all pretty rough estimates. Returns aren't constant, expenses aren't constant, and neither are incomes. But I think the scale is useful. At the end of the day, money is time and time is money. With what I think are fairly reasonable assumptions about index fund returns and typical inflation rates, I can actually quantify and bound my family's working time saved to be between 2.5 and 4.8 years.

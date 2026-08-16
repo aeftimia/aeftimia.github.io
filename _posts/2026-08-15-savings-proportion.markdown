@@ -46,13 +46,13 @@ $$
 
 matching the "closer to 9 years once you account for inflation" intuition. I think the core logic here is applicable to most of the middle class even if $$s<0.5$$.
 
-Just an aside here for anyone that gets all squirmy thinking of retiring the minute their expected interest equals their expected expenses. We can introduce a margin $$m \geq 1$$ for how many times over you want your interest to cover your spending before saying you could retire. The condition becomes $$rP(t) = m\cdot(1-s)I$$ instead of exact equality (so if $$m=1.5$$, the "5x take home" target from earlier just becomes "7.5x take home"), which reshapes the result above to
+For anyone that gets all squirmy thinking of retiring the minute their expected interest equals their expected expenses. We can introduce a margin $$m \geq 1$$ for how many times over you want your interest to cover your spending before saying you could retire. The condition becomes $$rP(t) = m\cdot(1-s)I$$ instead of exact equality (so if $$m=1.5$$, the "5x take home" target from earlier just becomes "7.5x take home"), which reshapes the result above to
 
 $$
 t(s) = \frac{\ln\!\left(\dfrac{m}{s} - (m-1)\right)}{\ln(1+r)}
 $$
 
-This is the same $$1/s$$ from the plain rule, just scaled by $$m$$ and shifted down by a constant $$(m-1)$$. The point is $$t(s)$$ has the same shape and remains invariant with your income $$I$$ even accounting for some safety margin.
+This is the same $$1/s$$ from the plain rule, just scaled by $$m$$ and shifted down by a constant $$(m-1)$$. The point is $$t(s)$$ has the same shape and remains invariant with your income $$I$$ even accounting for some safety margin. At $$m=25$$, we actually recover the common [4% rule](https://www.mrmoneymustache.com/2012/05/29/how-much-do-i-need-for-retirement/) of retirement and our entire retirement plan recreates Mr Money Mustache's [famous 2012 blog](https://www.mrmoneymustache.com/2012/01/13/the-shockingly-simple-math-behind-early-retirement/) relating savings rate to years to retirement.
 
 Today I noticed something else about this, and maybe it's almost as useful. As my wife and I considered a move to a higher cost of living area in exchange for more money, I asked whether our new expenses would hurt our early retirement timeline. I went back to $$t(s)$$. If a move raises both your income and your spending but leaves $$s$$ unchanged, your timeline to retirement doesn't move at all — and the lifestyle you retire *into* scales up right along with the lifestyle you had while saving, because your target portfolio $$P^* = m \cdot (1-s)I/r$$ scales linearly with $$I$$. As long as you don't let $$s$$ slip, you get to carry the upgrade with you: retire on the same schedule, spend more getting there, and spend more once you're there.
 

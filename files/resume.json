@@ -169,7 +169,7 @@
       ],
       "name": "Model Validation Toolkit (Dec 2021)",
       "description": "Research-grade open source library for ML validation and monitoring, featuring original work on constrained interpretable neural networks, Bayesian small-sample credibility analysis, information-theoretic drift detection (KL, JS, Wasserstein divergences), adaptive thresholding, bias-variance decomposition, and Sobol sensitivity analysis.",
-      "url": "https://github.com/FINRAOS/model-validation-toolkit"
+      "url": "https://aeftimia.github.io/model-validation-toolkit/"
     },
     {
       "keywords": [

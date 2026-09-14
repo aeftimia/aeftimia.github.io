@@ -5,6 +5,7 @@ on:
     branches: [master]
     paths:
       - "files/resume.tex"
+      - ".github/workflows/build-resume.yml"
 
 permissions:
   contents: write
@@ -18,7 +19,7 @@ jobs:
       - name: Install LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-fonts-recommended zip
+          sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended zip
 
       - name: Build resume
         working-directory: files

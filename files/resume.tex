@@ -1,0 +1,200 @@
+\documentclass[a4paper]{article}
+    \usepackage{fullpage}
+    \usepackage{amsmath}
+    \usepackage{amssymb}
+    \usepackage{textcomp}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \textheight=10in
+    \pagestyle{empty}
+    \raggedright
+    \usepackage[left=0.8in,right=0.8in,bottom=0.8in,top=0.8in]{geometry}
+
+    %\renewcommand{\encodingdefault}{cg}
+%\renewcommand{\rmdefault}{lgrcmr}
+
+\def\bull{\vrule height 0.8ex width .7ex depth -.1ex }
+
+% DEFINITIONS FOR RESUME %%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\area} [2] {
+    \vspace*{-9pt}
+    \begin{verse}
+        \textbf{#1}   #2
+    \end{verse}
+}
+
+\newcommand{\lineunder} {
+    \vspace*{-8pt} \\
+    \hspace*{-18pt} \hrulefill \\
+}
+
+\newcommand{\header} [1] {
+    {\hspace*{-18pt}\vspace*{6pt} \textsc{#1}}
+    \vspace*{-6pt} \lineunder
+}
+
+\newcommand{\employer} [3] {
+    { \textbf{#1} (#2)\\ \underline{\textbf{\emph{#3}}}\\  }
+}
+
+\newcommand{\contact} [3] {
+    \vspace*{-10pt}
+    \begin{center}
+        {\Huge \scshape {#1}}\\
+        #2 \\ #3
+    \end{center}
+    \vspace*{-8pt}
+}
+
+\newenvironment{achievements}{
+    \begin{list}
+        {$\bullet$}{\topsep 0pt \itemsep -2pt}}{\vspace*{4pt}
+    \end{list}
+}
+
+\newcommand{\schoolwithcourses} [4] {
+    \textbf{#1} #2 $\bullet$ #3\\
+    #4 \\
+    \vspace*{5pt}
+}
+
+\newcommand{\school} [4] {
+    \textbf{#1} #2 $\bullet$ #3\\
+    #4 \\
+}
+% END RESUME DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{document}
+\vspace*{-40pt}
+
+    
+
+%==== Profile ====%
+\vspace*{-10pt}
+\begin{center}
+	{\Huge \scshape {Alex Eftimiades}}\\
+	Lenoir, NC $\cdot$ alexeftimiades@gmail.com $\cdot$ 202-601-0543 $\cdot$ aeftimia.github.io\\
+\end{center}
+
+%==== Experience ====%
+\header{Work Experience}
+\vspace{1mm}
+
+\textbf{Penguin Random House} \hfill Remote\\
+\textit{Applied ML Scientist} \hfill Nov 2022 - Present\\
+\vspace{-1mm}
+\begin{itemize} \itemsep 1pt
+	\item Built backward-looking MMM attribution models constrained to platform-reported ROI bounds, and forward-looking optimization models projecting ROI on hypothetical spend scenarios.
+	\item Designed constrained neural net architecture (JAX) encoding spend-response shape and monotonicity priors to correct for platform attribution bias; used xgboost where data supported it.
+	\item Models projected to save \$4M/year via spend constraints and allocation.
+	\item Presented modeling approach at Data Science Salon (2023) and ANA Marketing Conference (2025).
+	\item Applied difference-in-differences to estimate incremental lift on channels with limited spend data.
+	\item Built Claude Code pre-tool-use hook intercepting error-swallowing patterns (silent excepts, broad fallbacks, silent default injections) using 12 regex classifiers and a three-tier decision system — clean pass, hard deny, or LLM judge; blocks 2 violations per session (avg) and adopted across the team.
+	\item Built autonomous error-resolution agent (Linux daemon) that monitors production pipeline failures via Slack, files merge requests using Claude Code, and verifies fixes by rerunning failing code and checking for traceback absence logs and changes in prod data.
+	\item Supervised an intern data scientist.
+	\item Built and deployed AI driven ad generation and monitoring pipeline using Python and Kubernetes. Ads deployed to Facebook, Instagram, and Google.
+	\item Analyzed campaign coverage and efficacy across products and platforms using Python and SQL.
+\end{itemize}
+\textbf{SPAR AI} \hfill Remote\\
+\textit{Research Mentee} \hfill Sep 2026 - Present\\
+\vspace{-1mm}
+\begin{itemize} \itemsep 1pt
+	\item Investigating whether topological features of LLM activations improve deception detection over linear probes, beginning with replication and benchmarking on established deception scenarios.
+\end{itemize}
+\textbf{Trekkit LLC} \hfill Remote\\
+\textit{Founder} \hfill Jan 2024 - Present\\
+\vspace{-1mm}
+\begin{itemize} \itemsep 1pt
+	\item Built and launched several financial planning apps on decisiondough.com (SST/AWS).
+	\item Built and launched Offensive Weather to Google Play Store and Apple App Store (SST/AWS).
+\end{itemize}
+\textbf{FINRA} \hfill Remote\\
+\textit{Lead Data Scientist} \hfill June 2019 - Nov 2022\\
+\vspace{-1mm}
+\begin{itemize} \itemsep 1pt
+	\item Led deployment of NLP models in production (Docker, Lambda/AWS), reducing costs by 80\%.
+	\item Led R\&D and open sourced the Model Validation Toolkit — a research library implementing constrained interpretable neural nets, Bayesian credibility analysis, and divergence-based drift detection.
+	\item Developed supervised and unsupervised models to identify insider trading (xgboost; 96\% AUC), market manipulation (dbscan), fraud (bayesian analysis), and triage external communication (xgboost, sklearn, BERT).
+	\item Mentored junior data scientists and led regular data science sessions and workshops.
+	\item Gave internal talks on: software engineering for data scientists, countering sample bias, measuring model drift, thresholding, normalizing flows.
+	\item Developed and conducted technical interview process and brought on 7 data scientists.
+	\item Promoted twice in three years.
+\end{itemize}
+\textbf{Deepsig} \hfill Arlington, VA\\
+\textit{Machine Learning Engineer} \hfill January 2019 - March 2019\\
+\vspace{-1mm}
+\begin{itemize} \itemsep 1pt
+	\item Designed and implemented deep learning based signal detector and classifier.
+	\item Compared deep learning approaches benchmarked against classical clustering algorithms for signal identification and classification.
+	\item Gave talk on semi-supervised learning.
+\end{itemize}
+\textbf{Catalist LLC} \hfill Washington DC\\
+\textit{Analytics Engineer} \hfill February 2018 - January 2019\\
+\vspace{-1mm}
+\begin{itemize} \itemsep 1pt
+	\item Optimized, parallelized, and deployed NLP Keras model.
+	\item Wrote SQL parser that refactored over one million lines of legacy SQL scripts.
+	\item Designed and wrote data processing pipeline for election results as they became available the night of the election.
+	\item Wrote internal technical guides on parallel processing.
+	\item Contributed code to Keras (fixed tokenizer).
+\end{itemize}
+\textbf{Comsol} \hfill Burlington, MA\\
+\textit{Developer} \hfill February 2016 - May 2017\\
+\vspace{-1mm}
+\begin{itemize} \itemsep 1pt
+	\item Researched models and techniques to simulate physical phenomena of interest to engineers and scientists.
+	\item Implemented and documented algorithms used for numerical simulations and user interfaces in Java.
+	\item Helped customers create and optimize simulations.
+\end{itemize}
+
+\header{Skills}
+\begin{tabular}{ l l }
+	Programming Languages: & Python, Bash, SQL                                      \\
+	Frameworks:            & Jax/Pytorch, Numpy/Scipy, Cython, Pandas, Scikit-learn \\
+	Tools:                 & Git, Vim, AWS, Kubernetes, Jupyter, Plotly, Docker     \\
+\end{tabular}
+\vspace{2mm}
+
+\header{Projects}
+{\textbf{Fitness Mortality Calculator (Apr 2026)}} {\sl Python} \hfill https://aeftimia.github.io/fitness-mortality/\\
+Evidence-based web app modeling all-cause mortality risk from VO2 max and grip strength; anchors to SSA life tables using published hazard ratios, normative percentile splines, and population-mean normalization via Gauss-Legendre quadrature.\\
+\vspace*{2mm}
+{\textbf{Tlang (March 2022)}} {\sl Python} \hfill https://github.com/aeftimia/tlang\\
+Production-grade DSL for composing context-sensitive transpilers with template-based code generation.\\
+\vspace*{2mm}
+{\textbf{Model Validation Toolkit (Dec 2021)}} {\sl Python} \hfill https://github.com/FINRAOS/model-validation-toolkit\\
+Research-grade open source library for ML validation and monitoring, featuring original work on constrained interpretable neural networks, Bayesian small-sample credibility analysis, information-theoretic drift detection (KL, JS, Wasserstein divergences), adaptive thresholding, bias-variance decomposition, and Sobol sensitivity analysis.\\
+\vspace*{2mm}
+{\textbf{Discrete Exterior Calculus Framework (May 2014)}} {\sl Python, Cython, CUDA} \hfill https://github.com/aeftimia/kahler\\
+GPU-parallelized discrete exterior calculus framework for Hermitian manifolds; extends PyDEC with Cython/CUDA and supports arbitrary metrics, periodic boundary conditions, and cohomological operators.\\
+\vspace*{2mm}
+{\textbf{Hexchat (July 2013)}} {\sl Python} \hfill https://github.com/aeftimia/hexchat\\
+Custom TCP-over-XMPP tunneling protocol for Tor, supporting multi-account JID rotation and ordered delivery across arbitrary chat relays to bypass censorship bandwidth limits.\\
+\vspace*{2mm}
+
+\header{Awards and Publications}
+\textbf{Leveraging Data Science to Optimize Retail Media Campaigns} \hfill ANA Marketing Conference\\
+Presented research on mixed market models at ANA Marketing Conference. \hfill Nov 2025\\
+\vspace*{2mm}
+\textbf{Advertising at Scale} \hfill Data Science Salon\\
+Presented work on automated advertising and A/B testing at Data Science Salon. \hfill June 2023\\
+\vspace*{2mm}
+\textbf{Introducing the Model Validation Toolkit} \hfill Open Source Data Science (ODSC) East 2022\\
+Gave talk at ODSC East introducing open source toolkit developed internally at FINRA. \hfill April 2022\\
+\vspace*{2mm}
+\textbf{Enhancing the Three-Dimensional Structure of Adherent Gingival Fibroblasts and Spheroids via a Fibrous Protein-Based Hydrogel Cover} \hfill Cells Tissues Organs\\
+Published with biologists at the American Dental Association Foundation. \hfill August 2016\\
+\vspace*{2mm}
+\textbf{Kahler: An Implementation of Discrete Exterior Calculus on Hermitian Manifolds} \hfill arXiv:1405.7879\\
+Independent research and implementation of a GPU-parallelized finite elements framework for Hermitian manifolds. \hfill May 2014\\
+\vspace*{2mm}
+
+%==== Education ====%
+\header{Education}
+\textbf{UMBC}\hfill Catonsville, MD\\
+BS Physics (Minor in Mathematics) \hfill 2013 - 2015\\
+\vspace{2mm}
+
+\ 
+\end{document}

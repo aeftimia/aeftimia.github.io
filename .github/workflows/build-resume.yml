@@ -1,0 +1,44 @@
+name: Build resume
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "files/resume.tex"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-fonts-recommended zip
+
+      - name: Build resume
+        working-directory: files
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error resume.tex
+          pdflatex -interaction=nonstopmode -halt-on-error resume.tex
+          cat > README-resume.txt <<'EOF'
+          # Resume source
+          `resume.tex` is the canonical source. Run `pdflatex resume.tex` to rebuild `resume.pdf`.
+          EOF
+          zip -j -q resume.zip resume.tex README-resume.txt
+          rm README-resume.txt
+
+      - name: Commit generated resume
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add files/resume.pdf files/resume.zip
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "build resume PDF"
+          git push

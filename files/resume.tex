@@ -90,7 +90,7 @@
 	\item Designed constrained neural net architecture (JAX) encoding spend-response shape and monotonicity priors to correct for platform attribution bias; used xgboost where data supported it.
 	\item Models projected to save \$4M/year via spend constraints and allocation.
 	\item Presented modeling approach at Data Science Salon (2023) and ANA Marketing Conference (2025).
-	\item Applied difference-in-differences to estimate incremental lift on channels with limited spend data.
+	\item Applied difference-in-differences with matched controls to estimate incremental lift on channels with limited spend data.
 	\item Built Claude Code pre-tool-use hook intercepting error-swallowing patterns (silent excepts, broad fallbacks, silent default injections) using 12 regex classifiers and a three-tier decision system — clean pass, hard deny, or LLM judge; blocks 2 violations per session (avg) and adopted across the team.
 	\item Built autonomous error-resolution agent (Linux daemon) that monitors production pipeline failures via Slack, files merge requests using Claude Code, and verifies fixes by rerunning failing code and checking for traceback absence logs and changes in prod data.
 	\item Supervised an intern data scientist.

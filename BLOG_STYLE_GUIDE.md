@@ -21,6 +21,7 @@ Notes from the October 31, 2026 REINFORCE-to-PPO drafting conversation. Use when
 - Caveat estimates/assumptions when material; avoid piling on disclaimers.
 
 ## Copy editing and sentence construction
+- Avoid inflated or formulaic AI phrasing such as “a striking result,” “the interesting thing is,” “that kind of association,” and “risks we already have some intuition for” when a direct concrete statement will do. State the actual comparison, number, or implication without announcing its significance. Favor short, natural sentences over rhetorical setup.
 - Prefer active voice. Identify the actor and use a direct verb whenever possible; keep passive voice when the agent is irrelevant or it improves precision.
 - Avoid reflexive “not X, but Y,” “for X rather than Y,” and “this was done for X, not Y” constructions. They often add length and create an artificial contrast. State the positive claim directly. Use contrast only when correcting a meaningful misconception.
 - Remove unnecessary hyphens from conversational expressions; keep standard technical compounds when they prevent ambiguity (e.g., “on-policy,” “state-dependent,” “finite-sample” as modifiers).

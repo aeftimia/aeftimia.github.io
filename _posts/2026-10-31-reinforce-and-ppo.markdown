@@ -40,7 +40,13 @@ $$
 =\nabla_\theta 1=0.
 $$
 
-Thus the expected gradient is unchanged. Individual sampled gradients *do* change, however, which is where [variance reduction](https://en.wikipedia.org/wiki/Variance_reduction) comes in. The baseline removes a common component of the returns that otherwise contributes noise to finite-sample estimates. A suitable baseline, often $$V^\pi(s)$$, can reduce variance considerably; an arbitrary one is not guaranteed to help. With the value baseline, the expected return minus baseline is the [advantage function](https://en.wikipedia.org/wiki/Proximal_policy_optimization#Policy_gradient_laws:_the_advantage_function), $$A^\pi(s,a)=Q^\pi(s,a)-V^\pi(s)$$. This statement is about the exact policy-gradient identity; learned or bootstrapped advantages may introduce approximation error.
+Thus the *expected* gradient is unchanged, but the gradients computed from a finite sample are not. In practice, we generally cannot enumerate every possible action or trajectory, so the baseline contributions that cancel exactly in expectation don't cancel exactly in any given batch. Choosing a suitable baseline removes much of that avoidable noise: it [reduces variance](https://en.wikipedia.org/wiki/Variance_reduction) and gives us a more reliable gradient estimate from the same data. It does not, by itself, make rare high-reward actions easier to discover.
+
+A common choice is the [value function](https://en.wikipedia.org/wiki/State-value_function) $V^\pi(s)$, giving the [advantage function](https://en.wikipedia.org/wiki/Advantage_function) $A^\pi(s,a)=Q^\pi(s,a)-V^\pi(s)$ in expectation. The baseline need not be exactly the expected return to preserve the identity, and a poorly chosen one can increase variance. Learned or bootstrapped advantage estimates introduce their own approximation issues.
+
+## Reusing expensive trajectories
+
+A more reliable estimate still requires collecting experience. Sometimes that is cheap; sometimes each trajectory means interacting with an environment, running a simulator, or generating and scoring a long [language-model](https://en.wikipedia.org/wiki/Large_language_model) completion. REINFORCE with a baseline and PPO address **two different inefficiencies**. The baseline helps with statistical noise in the data we already have. PPO gets multiple optimization steps out of a recently collected batch. Neither, by itself, solves [exploration](https://en.wikipedia.org/wiki/Exploration-exploitation_dilemma).
 
 ## PPO's extra ratio
 

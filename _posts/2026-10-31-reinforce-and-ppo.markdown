@@ -22,6 +22,28 @@ $$\mathbb E_{a\sim\pi_\theta(\cdot|s)}[b(s)\nabla_\theta\log\pi_\theta(a|s)]$$
 
 $$=b(s)\sum_a\nabla_\theta\pi_\theta(a|s)=b(s)\nabla_\theta 1=0.$$
 
+The cancellation deserves a closer look because it's easy to miss a sum when moving between expectations and log derivatives. Start with the baseline-adjusted *expected* update (learning rate $\alpha$):
+
+$\Delta\theta=\alpha\,\mathbb E_{a\sim\pi_\theta(\cdot|s)}\left[(R(a)-b(s))\frac{\nabla_\theta\pi_\theta(a|s)}{\pi_\theta(a|s)}\right].$
+
+**Expand the expectation as a sum over every possible action before canceling anything:**
+
+$\Delta\theta=\alpha\sum_a\pi_\theta(a|s)(R(a)-b(s))\frac{\nabla_\theta\pi_\theta(a|s)}{\pi_\theta(a|s)}.$
+
+Cancel the probabilities. **The sum over actions remains:**
+
+$\Delta\theta=\alpha\sum_a(R(a)-b(s))\nabla_\theta\pi_\theta(a|s).$
+
+Now split the sum and pull the action-independent baseline out:
+
+$\Delta\theta=\alpha\sum_a R(a)\nabla_\theta\pi_\theta(a|s)-\alpha b(s)\sum_a\nabla_\theta\pi_\theta(a|s).$
+
+Because action probabilities sum to one for *every* value of $\theta$,
+
+$\sum_a\nabla_\theta\pi_\theta(a|s)=\nabla_\theta\left(\sum_a\pi_\theta(a|s)\right)=\nabla_\theta 1=0.$
+
+So the baseline contribution is exactly zero **after summing over actions**, even though it is generally nonzero for any *one sampled action*. This is the part that's easy to lose by mentally canceling the sampling probability and forgetting that the expectation was a sum.
+
 The baseline changes each sampled gradient but leaves its expectation unchanged. It often reduces variance, although a poorly chosen baseline can increase it. Taking $$b(s)=V^\pi(s)$$ gives an advantage in expectation, $$A^\pi(s,a)=Q^\pi(s,a)-V^\pi(s)$$. A learned or bootstrapped advantage estimate introduces its own approximation issues.
 
 ## PPO's extra ratio

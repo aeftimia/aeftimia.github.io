@@ -18,7 +18,7 @@ Notes from the October 31, 2026 REINFORCE-to-PPO drafting conversation. Use when
 - Ground motivation in real sample limitations, including high-dimensional or large action/trajectory spaces and expensive rollouts. Don't imply action-space cardinality *by itself* determines Monte Carlo error, or that a baseline helps discover rare high-reward actions.
 - Use examples only if they illuminate an issue. Tiny two-action examples can obscure why sampling is costly when all actions are trivially enumerable. A short general derivation may be better.
 - Don't equate similar but distinct algorithms or overclaim exactness: PPO's first gradient at old=new matches advantage-weighted REINFORCE (holding advantages fixed and under the same data/conventions), not necessarily the entire algorithm. PPO is classified as on-policy despite short-term reuse, and per-action ratios aren't full trajectory-distribution corrections.
-- Caveat estimates/assumptions when material; avoid piling on disclaimers.
+- Present evidence, assumptions, and the limits of a claim clearly enough that no separate disclaimer is needed. Avoid defensive caveats and closing sentences that merely warn readers an analogy or comparison is not an exact equivalence; show the precise differences in the main explanation. Include a qualification only when it changes the substantive conclusion.
 
 ## Copy editing and sentence construction
 - Avoid inflated or formulaic AI phrasing such as “a striking result,” “the interesting thing is,” “that kind of association,” and “risks we already have some intuition for” when a direct concrete statement will do. State the actual comparison, number, or implication without announcing its significance. Favor short, natural sentences over rhetorical setup.

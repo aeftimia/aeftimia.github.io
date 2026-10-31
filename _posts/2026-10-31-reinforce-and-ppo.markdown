@@ -72,7 +72,7 @@ $$L^{\mathrm{CLIP}}=\mathbb E_{\mathrm{old}}\left[\min\left(r_\theta\hat A,\;\op
 
 stops rewarding sufficiently large *favorable* changes in action probability. Clipping discourages large updates without imposing a hard bound on the policy. The action probability ratio also leaves shifts in the state distribution uncorrected.
 
-In that sense PPO reuses experiences for a few approximately [on-policy](https://en.wikipedia.org/wiki/Reinforcement_learning) updates, and then collects fresh samples instead of maintaining an extensive replay buffer. The clipped surrogate allows several updates on fresh experience before collecting another batch.
+This puts PPO between vanilla REINFORCE and algorithms that use long lived [experience replay](https://en.wikipedia.org/wiki/Experience_replay), such as [DQN](https://en.wikipedia.org/wiki/Q-learning#Deep_Q-learning). REINFORCE typically takes an update from fresh trajectories and then samples again. PPO makes several gradient updates on a recent batch, using its probability ratio and clipping to manage policy drift. DQN can train on a replay buffer containing experience from many older policies. PPO remains classified as [on-policy](https://en.wikipedia.org/wiki/Reinforcement_learning) because it limits reuse and refreshes its data frequently. This is a spectrum of data reuse, rather than an equivalence between PPO and off-policy replay methods.
 
 ## References
 

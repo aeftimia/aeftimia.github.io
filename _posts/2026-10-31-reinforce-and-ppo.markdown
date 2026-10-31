@@ -6,7 +6,7 @@ title: "REINFORCE and PPO: When Does One Become the Other?"
 
 ## Setup
 
-I've been putting off learning [Proximal Policy Optimization (PPO)](https://en.wikipedia.org/wiki/Proximal_policy_optimization), partly because its objective looks substantially more complicated than [REINFORCE](https://en.wikipedia.org/wiki/Policy_gradient_method#REINFORCE). A useful way to make sense of a new algorithm is to ask when it reduces to one we already understand.
+I've been putting off learning [Proximal Policy Optimization (PPO)](https://en.wikipedia.org/wiki/Proximal_policy_optimization). I hadn't had much reason to use it until Unit 2 of [BlueDot Impact's Technical AI Safety course](https://bluedot.org/courses/technical-ai-safety) introduced [reinforcement learning from human feedback (RLHF)](https://en.wikipedia.org/wiki/Reinforcement_learning_from_human_feedback) and [reinforcement learning from AI feedback (RLAIF)](https://en.wikipedia.org/wiki/Reinforcement_learning_from_AI_feedback). PPO's objective looks substantially more complicated than [REINFORCE](https://en.wikipedia.org/wiki/Policy_gradient_method#REINFORCE), so I wanted to work out when one reduces to the other.
 
 For a policy $$\pi_\theta(a|s)$$, the [policy-gradient theorem](https://en.wikipedia.org/wiki/Policy_gradient_method) underlying REINFORCE gives
 
@@ -62,7 +62,7 @@ Now set $$\theta=\theta_{\mathrm{old}}$$. The ratio is exactly one, so
 
 $$\left.\nabla_\theta L\right|_{\theta_{\mathrm{old}}}=\mathbb E_{\mathrm{old}}\left[\hat A\nabla_\theta\log\pi_{\mathrm{old}}(a|s)\right].$$
 
-That's the REINFORCE estimator weighted by advantage on the same batch. Because the ratio is one, PPO's clipping is inactive locally too: the initial gradient of the clipped surrogate agrees with this one.
+Because the ratio is one, PPO's clipping is inactive locally. **At the old policy, the clipped PPO gradient equals the REINFORCE gradient weighted by advantage on the same batch.**
 
 ## What changes after the first update?
 
@@ -72,7 +72,7 @@ $$L^{\mathrm{CLIP}}=\mathbb E_{\mathrm{old}}\left[\min\left(r_\theta\hat A,\;\op
 
 stops rewarding sufficiently large *favorable* changes in action probability. Clipping discourages large updates without imposing a hard bound on the policy. The action probability ratio also leaves shifts in the state distribution uncorrected.
 
-In that sense PPO reuses experiences for a few approximately [on-policy](https://en.wikipedia.org/wiki/Reinforcement_learning) updates, and then collects fresh samples instead of maintaining an extensive replay buffer. The core policy gradient hasn't disappeared; PPO wraps it in a surrogate designed to make limited reuse of fresh experience practical.
+In that sense PPO reuses experiences for a few approximately [on-policy](https://en.wikipedia.org/wiki/Reinforcement_learning) updates, and then collects fresh samples instead of maintaining an extensive replay buffer. The clipped surrogate allows several updates on fresh experience before collecting another batch.
 
 ## References
 

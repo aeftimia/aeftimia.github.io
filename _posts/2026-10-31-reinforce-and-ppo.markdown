@@ -8,11 +8,11 @@ title: "REINFORCE and PPO: When Does One Become the Other?"
 
 I've been putting off learning Proximal Policy Optimization (PPO), partly because its objective looks substantially more complicated than REINFORCE. A useful way to make sense of a new algorithm is to ask when it reduces to one we already understand.
 
-For a policy $$\pi_\theta(a|s)$$, the policy-gradient identity behind REINFORCE is
+For a policy $$\pi_\theta(a|s)$$, the [policy-gradient theorem](https://en.wikipedia.org/wiki/Policy_gradient_method) underlying [REINFORCE](https://link.springer.com/article/10.1007/BF00992696) gives
 
 $$\nabla_\theta J(\theta)=\mathbb E_{\tau\sim\pi_\theta}\left[\sum_t G_t\nabla_\theta\log\pi_\theta(a_t|s_t)\right],$$
 
-where $$G_t$$ is the return from time $$t$$ onward (with appropriate discount conventions). The log derivative is just the identity $$\nabla\log\pi=\nabla\pi/\pi$$, which lets us estimate a derivative of an expectation by sampling from the policy.
+where $$G_t$$ is the return from time $$t$$ onward (with appropriate discount conventions). The [score-function (log-derivative) identity](https://en.wikipedia.org/wiki/Score_(statistics)) uses $$\nabla\log\pi=\nabla\pi/\pi$$, which turns a derivative of an expectation into a sampleable expectation. The [law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers) justifies approximating this expectation by a sample average; it is not itself an importance-sampling correction.
 
 ## Why subtracting a baseline doesn't change the gradient
 
@@ -40,11 +40,11 @@ $$
 =\nabla_\theta 1=0.
 $$
 
-Thus the expected gradient is unchanged. Individual sampled gradients *do* change, however, which is where variance reduction comes in. The baseline removes a common component of the returns that otherwise contributes noise to finite-sample estimates. A suitable baseline, often $$V^\pi(s)$$, can reduce variance considerably; an arbitrary one is not guaranteed to help. With the value baseline, the expected return minus baseline is the advantage, $$A^\pi(s,a)=Q^\pi(s,a)-V^\pi(s)$$. This statement is about the exact policy-gradient identity; learned or bootstrapped advantages may introduce approximation error.
+Thus the expected gradient is unchanged. Individual sampled gradients *do* change, however, which is where [variance reduction](https://en.wikipedia.org/wiki/Variance_reduction) comes in. The baseline removes a common component of the returns that otherwise contributes noise to finite-sample estimates. A suitable baseline, often $$V^\pi(s)$$, can reduce variance considerably; an arbitrary one is not guaranteed to help. With the value baseline, the expected return minus baseline is the [advantage function](https://spinningup.openai.com/en/latest/spinningup/rl_intro.html#advantage-functions), $$A^\pi(s,a)=Q^\pi(s,a)-V^\pi(s)$$. This statement is about the exact policy-gradient identity; learned or bootstrapped advantages may introduce approximation error.
 
 ## PPO's extra ratio
 
-Collect trajectories using $$\pi_{\mathrm{old}}$$, then optimize a new policy against those samples. PPO begins with an importance-weighted surrogate:
+Collect trajectories using $$\pi_{\mathrm{old}}$$, then optimize a new policy against those samples. PPO begins with a surrogate using an [importance-sampling](https://en.wikipedia.org/wiki/Importance_sampling) ratio. Unlike the score-function identity above, this ratio reweights actions sampled from the old policy when evaluating the new policy (for the old-policy state distribution):
 
 $$L(\theta)=\mathbb E_{(s,a)\sim\pi_{\mathrm{old}}}\left[r_\theta(s,a)\hat A(s,a)\right],\qquad r_\theta(s,a)=\frac{\pi_\theta(a|s)}{\pi_{\mathrm{old}}(a|s)}.$$
 
@@ -60,7 +60,7 @@ That's the advantage-weighted REINFORCE estimator on the same batch. Because the
 
 ## What changes after the first update?
 
-PPO reuses the sampled trajectories for multiple gradient steps. Once the policy moves, $$r_\theta$$ is no longer one. The clipped objective,
+PPO reuses the sampled trajectories for multiple gradient steps, somewhat like short-lived [experience replay](https://en.wikipedia.org/wiki/Experience_replay). Once the policy moves, $$r_\theta$$ is no longer one. The [clipped surrogate objective](https://spinningup.openai.com/en/latest/algorithms/ppo.html),
 
 $$L^{\mathrm{CLIP}}=\mathbb E_{\mathrm{old}}\left[\min\left(r_\theta\hat A,\;\operatorname{clip}(r_\theta,1-\epsilon,1+\epsilon)\hat A\right)\right],$$
 

@@ -19,6 +19,12 @@ Notes from the October 31, 2026 REINFORCE-to-PPO drafting conversation. Use when
 - Don't equate similar but distinct algorithms or overclaim exactness: PPO's first gradient at old=new matches advantage-weighted REINFORCE (holding advantages fixed and under the same data/conventions), not necessarily the entire algorithm. PPO is classified as on-policy despite short-term reuse, and per-action ratios aren't full trajectory-distribution corrections.
 - Caveat estimates/assumptions when material; avoid piling on disclaimers.
 
+## Copy editing and sentence construction
+- Prefer active voice. Identify the actor and use a direct verb whenever possible; keep passive voice when the agent is irrelevant or it improves precision.
+- Avoid reflexive “not X, but Y,” “for X rather than Y,” and “this was done for X, not Y” constructions. They often add length and create an artificial contrast. State the positive claim directly. Use contrast only when correcting a meaningful misconception.
+- Remove unnecessary hyphens from conversational expressions; keep standard technical compounds when they prevent ambiguity (e.g., “on-policy,” “state-dependent,” “finite-sample” as modifiers).
+- Make a dedicated last pass for active voice, needless contrast, unnecessary hyphenation, and wordiness. Read it aloud.
+
 ## Hyperlinks and citations
 - Wikipedia-inspired, concept-dense linking is a strong stylistic preference, reminiscent of Gwern: link important concepts on first occurrence inline, especially established technical terms (law of large numbers, importance sampling, REINFORCE, policy gradients, variance reduction, advantages, experience replay, etc.).
 - Prefer relevant Wikipedia pages for general concepts; original papers and authoritative technical sources for algorithms and nontrivial claims.
@@ -32,7 +38,7 @@ Notes from the October 31, 2026 REINFORCE-to-PPO drafting conversation. Use when
 3. Audit algebra and the exact scope of identities; distinguish what holds in expectation versus per sample.
 4. Cut wordiness: replace lengthy narration with a tight derivation and one sentence on why it matters.
 5. Check practical motivation and keep distinct problems separate (variance reduction, replay/reuse, exploration).
-6. Make a hyperlink pass, verify references/targets, and check rendered math/Markdown formatting.
+6. Make hyperlink and copy editing passes; check active voice, unnecessary contrast, hyphenation, references/targets, and rendered math/Markdown formatting.
 7. Read the draft aloud if requested and iterate on specific passages.
 8. Preserve unpublished work on a separate GitHub branch; never publish or merge without explicit request.
 

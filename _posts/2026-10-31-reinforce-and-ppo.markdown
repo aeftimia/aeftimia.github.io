@@ -16,47 +16,31 @@ where $$G_t$$ is the return from time $$t$$ onward (with appropriate discount co
 
 ## Why subtracting a baseline doesn't change the gradient
 
-Suppose we've already derived REINFORCE and want to replace the return with an advantage: return minus some baseline $$b(s)$$. You might reasonably expect this to change the magnitude of the gradient. After all, we're subtracting something from every reward! The trick is to write out the expectation **before** canceling its probability terms.
-
-Fix a state $$s$$ for the moment, and let $$R(a)$$ be the expected return from choosing action $$a$$ there. The expected gradient-ascent update, with learning rate $$\alpha$$, is
+In REINFORCE we can replace the return $$R(a)$$ with $$R(a)-b(s)$$, where the baseline depends on the state but not the sampled action. Expand the expectation as a sum over actions and cancel the probabilities:
 
 $$
-\Delta\theta=\alpha\,\mathbb E_{a\sim\pi_\theta(\cdot|s)}
-\left[(R(a)-b(s))\nabla_\theta\log\pi_\theta(a|s)\right].
+\mathbb E_{a\sim\pi_\theta(\cdot|s)}
+[(R(a)-b(s))\nabla_\theta\log\pi_\theta(a|s)]
+=
+\sum_a(R(a)-b(s))\nabla_\theta\pi_\theta(a|s).
 $$
 
-Replace the log derivative with $$\nabla_\theta\pi_\theta(a|s)/\pi_\theta(a|s)$$. Then, rather than canceling anything yet, **expand the expectation into a sum over every possible action**:
+Distribute the terms:
 
 $$
-\Delta\theta=\alpha\sum_a\pi_\theta(a|s)(R(a)-b(s))
-\frac{\nabla_\theta\pi_\theta(a|s)}{\pi_\theta(a|s)}.
+=\sum_a R(a)\nabla_\theta\pi_\theta(a|s)
+-b(s)\sum_a\nabla_\theta\pi_\theta(a|s).
 $$
 
-Now the probability in the sum cancels the probability in the denominator. But **the sum itself hasn't gone anywhere**:
-
-$$
-\Delta\theta=\alpha\sum_a(R(a)-b(s))\nabla_\theta\pi_\theta(a|s).
-$$
-
-Distribute and pull out the baseline, which is constant *across actions at this state*:
-
-$$
-\Delta\theta=
-\alpha\sum_a R(a)\nabla_\theta\pi_\theta(a|s)
--\alpha b(s)\sum_a\nabla_\theta\pi_\theta(a|s).
-$$
-
-Here's the important part. The probabilities of **all possible actions sum to one**, for *every* value of $$\theta$$. Therefore the derivative of their sum is the derivative of one:
+**The second term vanishes because the action probabilities always sum to one; therefore their derivatives sum to the derivative of one, which is zero:**
 
 $$
 \sum_a\nabla_\theta\pi_\theta(a|s)
-=\nabla_\theta\left(\sum_a\pi_\theta(a|s)\right)
+=\nabla_\theta\sum_a\pi_\theta(a|s)
 =\nabla_\theta 1=0.
 $$
 
-And there it is: the baseline term is $$-\alpha b(s)\times 0$$. It disappears **because we summed the derivatives of every action probability**, not because the baseline was small, or because we adjusted the learning rate. Individual action-probability derivatives need not be zero; their **sum** is zero.
-
-This is an identity for the *expected* gradient, not for the gradient computed from one sampled action. The baseline changes each sampled update and can reduce the variance of those updates without changing their mean. (A badly chosen baseline can increase variance.) Taking $$b(s)=V^\pi(s)$$ gives the usual advantage $$A^\pi(s,a)=Q^\pi(s,a)-V^\pi(s)$$ in expectation. Approximate learned or bootstrapped advantages bring additional estimation error.
+Thus the expected gradient is unchanged. Individual sampled gradients *do* change, however, which is where variance reduction comes in. The baseline removes a common component of the returns that otherwise contributes noise to finite-sample estimates. A suitable baseline, often $$V^\pi(s)$$, can reduce variance considerably; an arbitrary one is not guaranteed to help. With the value baseline, the expected return minus baseline is the advantage, $$A^\pi(s,a)=Q^\pi(s,a)-V^\pi(s)$$. This statement is about the exact policy-gradient identity; learned or bootstrapped advantages may introduce approximation error.
 
 ## PPO's extra ratio
 

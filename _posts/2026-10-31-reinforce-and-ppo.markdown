@@ -40,11 +40,11 @@ $$
 =\nabla_\theta 1=0.
 $$
 
-Thus the expected gradient is unchanged. Individual sampled gradients *do* change, however, which is where [variance reduction](https://en.wikipedia.org/wiki/Variance_reduction) comes in. The baseline removes a common component of the returns that otherwise contributes noise to finite-sample estimates. A suitable baseline, often $$V^\pi(s)$$, can reduce variance considerably; an arbitrary one is not guaranteed to help. With the value baseline, the expected return minus baseline is the [advantage function](https://en.wikipedia.org/wiki/Advantage_function), $$A^\pi(s,a)=Q^\pi(s,a)-V^\pi(s)$$. This statement is about the exact policy-gradient identity; learned or bootstrapped advantages may introduce approximation error.
+Thus the expected gradient is unchanged. Individual sampled gradients *do* change, however, which is where [variance reduction](https://en.wikipedia.org/wiki/Variance_reduction) comes in. The baseline removes a common component of the returns that otherwise contributes noise to finite-sample estimates. A suitable baseline, often $$V^\pi(s)$$, can reduce variance considerably; an arbitrary one is not guaranteed to help. With the value baseline, the expected return minus baseline is the [advantage function](https://en.wikipedia.org/wiki/Proximal_policy_optimization#Policy_gradient_laws:_the_advantage_function), $$A^\pi(s,a)=Q^\pi(s,a)-V^\pi(s)$$. This statement is about the exact policy-gradient identity; learned or bootstrapped advantages may introduce approximation error.
 
 ## PPO's extra ratio
 
-Collect trajectories using $$\pi_{\mathrm{old}}$$, then optimize a new policy against those samples. PPO begins with a [surrogate objective](https://en.wikipedia.org/wiki/Surrogate_model) using an [importance-sampling](https://en.wikipedia.org/wiki/Importance_sampling) ratio. Unlike the score-function identity above, this ratio reweights actions sampled from the old policy when evaluating the new policy (for the old-policy state distribution):
+Collect trajectories using $$\pi_{\mathrm{old}}$$, then optimize a new policy against those samples. PPO begins with a surrogate objective using an [importance-sampling](https://en.wikipedia.org/wiki/Importance_sampling) ratio. Unlike the score-function identity above, this ratio reweights actions sampled from the old policy when evaluating the new policy (for the old-policy state distribution):
 
 $$L(\theta)=\mathbb E_{(s,a)\sim\pi_{\mathrm{old}}}\left[r_\theta(s,a)\hat A(s,a)\right],\qquad r_\theta(s,a)=\frac{\pi_\theta(a|s)}{\pi_{\mathrm{old}}(a|s)}.$$
 
@@ -66,7 +66,7 @@ $$L^{\mathrm{CLIP}}=\mathbb E_{\mathrm{old}}\left[\min\left(r_\theta\hat A,\;\op
 
 stops rewarding sufficiently large *favorable* changes in action probability. It does not impose a hard bound on the policy, nor does the per-action ratio exactly correct the changed distribution of whole trajectories.
 
-In that sense PPO reuses experiences for a few approximately [on-policy](https://en.wikipedia.org/wiki/On-policy_learning) updates, rather than maintaining a long-lived replay buffer. The core policy gradient hasn't disappeared; PPO wraps it in a surrogate designed to make limited reuse of fresh experience practical.
+In that sense PPO reuses experiences for a few approximately [on-policy](https://en.wikipedia.org/wiki/Reinforcement_learning) updates, rather than maintaining a long-lived replay buffer. The core policy gradient hasn't disappeared; PPO wraps it in a surrogate designed to make limited reuse of fresh experience practical.
 
 ## References
 

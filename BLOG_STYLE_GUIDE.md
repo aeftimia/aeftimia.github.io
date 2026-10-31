@@ -7,6 +7,7 @@ Notes from the October 31, 2026 REINFORCE-to-PPO drafting conversation. Use when
 - Write as a mathematically literate practitioner working something out, not as a textbook instructor or marketing writer. Conversational, occasionally playful, direct, compact. Respect readers' mathematical competence.
 - Start with an interesting concrete question, identity, or reduction, and end with what it implies.
 - Favor insights that show **when one technique reduces to another**, identifying exact conditions and caveats. This is an important way the author consolidates understanding.
+- **Connect concepts into a coherent mental model.** Show how ideas from different papers, algorithms, and eras relate, where they share mathematical structure, and where they diverge. A strong post helps readers *derive and relate* ideas instead of memorizing disconnected definitions. Prefer illuminating conceptual links over a catalog of facts, while retaining precision about the limits of each analogy.
 - Keep the article reasonably short. Avoid over-explaining routine steps or repeating a point once the key mathematical identity is established.
 
 ## Mathematics and conceptual precision

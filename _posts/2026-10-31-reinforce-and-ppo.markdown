@@ -6,7 +6,7 @@ title: "REINFORCE and PPO: When Does One Become the Other?"
 
 ## Setup
 
-I've been putting off learning [Proximal Policy Optimization (PPO)](https://en.wikipedia.org/wiki/Proximal_policy_optimization). I hadn't had much reason to use it until Unit 2 of [BlueDot Impact's Technical AI Safety course](https://bluedot.org/courses/technical-ai-safety) introduced [reinforcement learning from human feedback (RLHF)](https://en.wikipedia.org/wiki/Reinforcement_learning_from_human_feedback) and [reinforcement learning from AI feedback (RLAIF)](https://en.wikipedia.org/wiki/Reinforcement_learning_from_AI_feedback). PPO's objective looks substantially more complicated than [REINFORCE](https://en.wikipedia.org/wiki/Policy_gradient_method#REINFORCE), so I wanted to work out when one reduces to the other.
+I've been putting off learning [Proximal Policy Optimization (PPO)](https://en.wikipedia.org/wiki/Proximal_policy_optimization). I hadn't had much reason to use it until Unit 2 of [BlueDot Impact's Technical AI Safety course](https://bluedot.org/courses/technical-ai-safety) introduced [reinforcement learning from human feedback (RLHF)](https://en.wikipedia.org/wiki/Reinforcement_learning_from_human_feedback) and [reinforcement learning from AI feedback (RLAIF)](https://en.wikipedia.org/wiki/Reinforcement_learning_from_human_feedback#Reinforcement_learning_from_AI_feedback). PPO's objective looks substantially more complicated than [REINFORCE](https://en.wikipedia.org/wiki/Policy_gradient_method#REINFORCE), so I wanted to work out when one reduces to the other.
 
 For a policy $$\pi_\theta(a|s)$$, the [policy-gradient theorem](https://en.wikipedia.org/wiki/Policy_gradient_method) underlying REINFORCE gives
 

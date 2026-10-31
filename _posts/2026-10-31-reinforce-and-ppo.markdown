@@ -40,7 +40,7 @@ $$
 =\nabla_\theta 1=0.
 $$
 
-Thus the *expected* gradient is unchanged, but the gradients computed from a finite sample are not. In practice, we generally cannot enumerate every possible action or trajectory, so the baseline contributions that cancel exactly in expectation don't cancel exactly in any given batch. Choosing a suitable baseline removes much of that avoidable noise: it [reduces variance](https://en.wikipedia.org/wiki/Variance_reduction) and gives us a more reliable gradient estimate from the same data. It does not, by itself, make rare high-reward actions easier to discover.
+Thus the *expected* gradient is unchanged, but the gradients computed from a finite sample are not. In practice, we generally cannot enumerate every possible action or trajectory, so the baseline contributions that cancel exactly in expectation don't cancel exactly in any given batch. Choosing a suitable baseline [reduces the variance](https://en.wikipedia.org/wiki/Variance_reduction) of the finite-sample gradient estimator, giving us a more reliable estimate from the same data. It does not, by itself, make rare high-reward actions easier to discover.
 
 A common choice is the [value function](https://en.wikipedia.org/wiki/State-value_function) $V^\pi(s)$, giving the [advantage function](https://en.wikipedia.org/wiki/Advantage_function) $A^\pi(s,a)=Q^\pi(s,a)-V^\pi(s)$ in expectation. The baseline need not be exactly the expected return to preserve the identity, and a poorly chosen one can increase variance. Learned or bootstrapped advantage estimates introduce their own approximation issues.
 

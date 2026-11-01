@@ -27,7 +27,7 @@ The important step is normalizing the fitness hazard model against the populatio
 
 That makes it possible to express the results in absolute probabilities, years of life expectancy, and equivalent risks from other activities.
 
-VO₂ max and grip strength are useful proxies for general physical fitness. Both reflect broader physiological characteristics that exercise can improve. Squeezing a grip strengthener presumably won't reproduce the health benefits associated with being physically strong, though rock climbers might be an interesting exception.
+VO₂ max and grip strength are useful proxies for general physical fitness. As Peter Attia describes them, they're integrators of the work required to achieve a given level of fitness, often accumulated over years. Squeezing a grip strengthener presumably won't reproduce the health benefits associated with being physically strong, though rock climbers might be an interesting exception.
 
 ## Risk Equivalence
 

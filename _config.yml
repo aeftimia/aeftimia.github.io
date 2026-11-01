@@ -26,6 +26,8 @@ github_username:  aeftimia
 markdown: kramdown
 mathjax: true
 theme: minima
+header_pages:
+  - about.md
 plugins:
   - jekyll-feed
 

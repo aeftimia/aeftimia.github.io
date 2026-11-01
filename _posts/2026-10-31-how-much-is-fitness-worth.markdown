@@ -19,7 +19,7 @@ I wanted to understand what the research meant in absolute terms.
 
 Most studies report [hazard ratios](https://en.wikipedia.org/wiki/Hazard_ratio), sometimes comparing fitness percentiles within age and sex groups. These establish relative differences in mortality, but they don't immediately tell us how much longer someone might expect to live or how much their VO₂ max would have to improve.
 
-So I built a [fitness and mortality calculator](https://aeftimia.github.io/vo2max-mortality).
+So I built a [fitness and mortality calculator](https://aeftimia.github.io/fitness-mortality/).
 
 The model combines [FRIEND 2022](https://doi.org/10.1016/j.mayocp.2021.08.020) reference distributions of VO₂ max, [Kokkinos et al.](https://doi.org/10.1016/j.jacc.2022.05.031) estimates of mortality hazard per unit of fitness, and [US life tables](https://www.ssa.gov/oact/STATS/table4c6.html), which give baseline mortality rates by age and sex. It applies a similar approach to grip strength, using [international grip strength norms](https://pmc.ncbi.nlm.nih.gov/articles/PMC11863340/) and [published mortality associations](https://www.bmj.com/content/361/bmj.k1651).
 

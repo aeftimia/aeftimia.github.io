@@ -8,9 +8,9 @@ title: "REINFORCE and PPO: When Does One Become the Other?"
 
 I've been putting off learning [Proximal Policy Optimization (PPO)](https://en.wikipedia.org/wiki/Proximal_policy_optimization). I hadn't had much reason to use it until Unit 2 of [BlueDot Impact's Technical AI Safety course](https://bluedot.org/courses/technical-ai-safety) introduced [reinforcement learning from human feedback (RLHF)](https://en.wikipedia.org/wiki/Reinforcement_learning_from_human_feedback) and [reinforcement learning from AI feedback (RLAIF)](https://en.wikipedia.org/wiki/Reinforcement_learning_from_human_feedback#Reinforcement_learning_from_AI_feedback). PPO's objective looks substantially more complicated than [REINFORCE](https://en.wikipedia.org/wiki/Policy_gradient_method#REINFORCE), so I wanted to work out when one reduces to the other.
 
-For a policy $\pi_\theta(a|s)$, the [policy-gradient theorem](https://en.wikipedia.org/wiki/Policy_gradient_method) underlying REINFORCE gives
+For a policy $\pi_\theta(a\mid s)$, the [policy-gradient theorem](https://en.wikipedia.org/wiki/Policy_gradient_method) underlying REINFORCE gives
 
-$$\nabla_\theta J(\theta)=\mathbb E_{\tau\sim\pi_\theta}\left[\sum_t G_t\nabla_\theta\log\pi_\theta(a_t|s_t)\right],$$
+$$\nabla_\theta J(\theta)=\mathbb E_{\tau\sim\pi_\theta}\left[\sum_t G_t\nabla_\theta\log\pi_\theta(a_t\mid s_t)\right],$$
 
 where $G_t$ is the return from time $t$ onward (with appropriate discount conventions). The [score function (log derivative) identity](https://en.wikipedia.org/wiki/Score_(statistics)) uses $\nabla\log\pi=\nabla\pi/\pi$, which turns a derivative of an expectation into a sampleable expectation. The [law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers) justifies approximating this expectation by a sample average; the sampling distribution remains unchanged.
 
@@ -19,24 +19,24 @@ where $G_t$ is the return from time $t$ onward (with appropriate discount conven
 In REINFORCE we can replace the return $R(a)$ with $R(a)-b(s)$, where the baseline depends on the state but not the sampled action. Expand the expectation as a sum over actions and cancel the probabilities:
 
 $$
-\mathbb E_{a\sim\pi_\theta(\cdot|s)}
-[(R(a)-b(s))\nabla_\theta\log\pi_\theta(a|s)]
+\mathbb E_{a\sim\pi_\theta(\cdot\mid s)}
+[(R(a)-b(s))\nabla_\theta\log\pi_\theta(a\mid s)]
 =
-\sum_a(R(a)-b(s))\nabla_\theta\pi_\theta(a|s).
+\sum_a(R(a)-b(s))\nabla_\theta\pi_\theta(a\mid s).
 $$
 
 Distribute the terms:
 
 $$
-=\sum_a R(a)\nabla_\theta\pi_\theta(a|s)
--b(s)\sum_a\nabla_\theta\pi_\theta(a|s).
+=\sum_a R(a)\nabla_\theta\pi_\theta(a\mid s)
+-b(s)\sum_a\nabla_\theta\pi_\theta(a\mid s).
 $$
 
 **The second term vanishes because the action probabilities always sum to one; therefore their derivatives sum to the derivative of one, which is zero:**
 
 $$
-\sum_a\nabla_\theta\pi_\theta(a|s)
-=\nabla_\theta\sum_a\pi_\theta(a|s)
+\sum_a\nabla_\theta\pi_\theta(a\mid s)
+=\nabla_\theta\sum_a\pi_\theta(a\mid s)
 =\nabla_\theta 1=0.
 $$
 
@@ -52,15 +52,15 @@ A more reliable estimate still requires collecting experience. Sometimes that is
 
 Collect trajectories using $\pi_{\mathrm{old}}$, then optimize a new policy against those samples. PPO begins with a surrogate objective using an [importance sampling](https://en.wikipedia.org/wiki/Importance_sampling) ratio. This ratio reweights actions sampled from the old policy while retaining its state distribution:
 
-$$L(\theta)=\mathbb E_{(s,a)\sim\pi_{\mathrm{old}}}\left[r_\theta(s,a)\hat A(s,a)\right],\qquad r_\theta(s,a)=\frac{\pi_\theta(a|s)}{\pi_{\mathrm{old}}(a|s)}.$$
+$$L(\theta)=\mathbb E_{(s,a)\sim\pi_{\mathrm{old}}}\left[r_\theta(s,a)\hat A(s,a)\right],\qquad r_\theta(s,a)=\frac{\pi_\theta(a\mid s)}{\pi_{\mathrm{old}}(a\mid s)}.$$
 
 The old policy and estimated advantages are fixed during this optimization. Differentiate:
 
-$$\nabla_\theta L=\mathbb E_{\mathrm{old}}\left[\hat A\,r_\theta\nabla_\theta\log\pi_\theta(a|s)\right].$$
+$$\nabla_\theta L=\mathbb E_{\mathrm{old}}\left[\hat A\,r_\theta\nabla_\theta\log\pi_\theta(a\mid s)\right].$$
 
 Now set $\theta=\theta_{\mathrm{old}}$. The ratio is exactly one, so
 
-$$\left.\nabla_\theta L\right|_{\theta_{\mathrm{old}}}=\mathbb E_{\mathrm{old}}\left[\hat A\nabla_\theta\log\pi_{\mathrm{old}}(a|s)\right].$$
+$$\left.\nabla_\theta L\right\mid _{\theta_{\mathrm{old}}}=\mathbb E_{\mathrm{old}}\left[\hat A\nabla_\theta\log\pi_{\mathrm{old}}(a\mid s)\right].$$
 
 Because the ratio is one, clipping is inactive locally. **PPO's first policy gradient step on a fresh batch is the same as advantage-weighted REINFORCE**, assuming the same advantage estimates and optimizer. PPO then keeps that batch while taking more gradient steps. As the new policy moves away from the old one, the ratio changes and clipping can affect the updates. After several steps, PPO collects new trajectories under its updated policy.
 

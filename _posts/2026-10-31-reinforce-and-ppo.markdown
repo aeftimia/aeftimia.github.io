@@ -60,7 +60,7 @@ $$\nabla_\theta L=\mathbb E_{\mathrm{old}}\left[\hat A\,r_\theta\nabla_\theta\lo
 
 Now set $\theta=\theta_{\mathrm{old}}$. The ratio is exactly one, so
 
-$$\left.\nabla_\theta L\right\mid _{\theta_{\mathrm{old}}}=\mathbb E_{\mathrm{old}}\left[\hat A\nabla_\theta\log\pi_{\mathrm{old}}(a\mid s)\right].$$
+$$\left.\nabla_\theta L\right\rvert_{\theta_{\mathrm{old}}}=\mathbb E_{\mathrm{old}}\left[\hat A\nabla_\theta\log\pi_{\mathrm{old}}(a\mid s)\right].$$
 
 Because the ratio is one, clipping is inactive locally. **PPO's first policy gradient step on a fresh batch is the same as advantage-weighted REINFORCE**, assuming the same advantage estimates and optimizer. PPO then keeps that batch while taking more gradient steps. As the new policy moves away from the old one, the ratio changes and clipping can affect the updates. After several steps, PPO collects new trajectories under its updated policy.
 
